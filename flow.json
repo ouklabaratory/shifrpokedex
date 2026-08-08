@@ -78,6 +78,27 @@
       "id": "mission_2",
       "type": "mission",
       "missionId": 2,
+      "next": "oak_after_eevee_incoming"
+    },
+    {
+      "id": "oak_after_eevee_incoming",
+      "type": "incoming",
+      "next": "oak_after_eevee"
+    },
+    {
+      "id": "oak_after_eevee",
+      "type": "audio",
+      "audio": "audio/oak03.mp3",
+      "timeline": "timelines/oak_after_eevee.json",
+      "next": "eevee_trust_challenge"
+    },
+    {
+      "id": "eevee_trust_challenge",
+      "type": "challenge",
+      "eyebrow": "ИСПЫТАНИЕ",
+      "title": "\"ДОВЕРИЕ\"",
+      "description": "Маршрут команды:\n🏠 Командный центр\n⬇\n🛏 Комната девочек\n⬇\n🚪 Прихожая\n⬇\n🍽 Кухня\n⬇\n🏠 Командный центр\n\nПравила.\n• Постройтесь в одну цепочку.\n• Каждый участник должен держаться хотя бы за одного другого участника.\n• Во время движения нельзя разрывать цепочку.\n• Если цепочка разорвалась - команда возвращается в Командный центр и начинает маршрут сначала.",
+      "buttonLabel": "НАЧАТЬ ИСПЫТАНИЕ",
       "next": "mission_3"
     },
     {

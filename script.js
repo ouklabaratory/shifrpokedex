@@ -1484,7 +1484,8 @@ class QuestApp {
     el.missionFeedback.textContent = "ПРОВЕРКА...\n...";
     el.missionFeedback.className = "mission-feedback success";
     await wait(this.config.settings.verificationDelayMs || 1600);
-    el.missionFeedback.textContent = `${missionData.successText}\n\nВосстанавливаю связь...`;
+    const postSuccessText = missionData.postSuccessText ?? "\n\nВосстанавливаю связь...";
+    el.missionFeedback.textContent = `${missionData.successText}${postSuccessText}`;
     this.progress.save(this.snapshot());
     await wait(this.config.settings.nextMissionDelayMs);
     el.checkCode.disabled = false;
@@ -1673,6 +1674,7 @@ function missionRuntimeData(mission = {}) {
     codePromptText: mission.codePromptText || "",
     enterCodeButtonLabel: mission.enterCodeButtonLabel || "",
     codeEntryText: mission.codeEntryText || "",
+    postSuccessText: mission.postSuccessText,
     successText: successScreen.text || mission.successText || card.description || "",
     successEffect: successScreen.effect || card.successEffect || "success"
   };
