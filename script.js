@@ -1315,6 +1315,9 @@ class QuestApp {
     el.secretCode.hidden = true;
     el.missionSecondaryAction.hidden = true;
     el.checkCode.hidden = this.missionPhase === "signal";
+    el.checkCode.disabled = false;
+    el.secretCode.disabled = false;
+    el.missionSecondaryAction.disabled = false;
     el.checkCode.textContent = this.activeMissionData.actionButtonLabel || this.config.quest.checkButton;
     el.secretCode.value = this.enteredCodes?.[mission.id] || "";
     el.missionFeedback.textContent = "";
