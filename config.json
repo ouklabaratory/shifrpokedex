@@ -1,0 +1,332 @@
+{
+  "app": {
+    "title": "POKÉDEX // SECRET LINK",
+    "deviceName": "POKÉDEX",
+    "professorName": "ПРОФЕССОР ОУК",
+    "logo": "images/logo.svg",
+    "bootImage": "images/boot.svg",
+    "incomingImage": "images/incoming.svg",
+    "victoryImage": "images/victory.svg",
+    "icons": [
+      "images/icon.svg",
+      "images/icon-maskable.svg"
+    ]
+  },
+  "settings": {
+    "slideIntervalMs": 2400,
+    "incomingDelayMs": 2400,
+    "coordinatesDelayMs": 2500,
+    "nextMissionDelayMs": 1800,
+    "voiceFallbackDurationMs": 11800,
+    "diagnosticsMinDelayMs": 30000,
+    "diagnosticsMaxDelayMs": 60000,
+    "enableAmbientSound": true,
+    "enableVibration": true,
+    "enableDebugPanel": false,
+    "testModeCode": "ADMIN",
+    "effectsVolume": 0.72,
+    "voiceVolume": 1,
+    "musicVolume": 0.35,
+    "ambientVolume": 0.006,
+    "partyMode": true,
+    "voiceSafetyTimeoutMs": 600000
+  },
+  "team": {
+    "minNameLength": 3,
+    "maxNameLength": 30,
+    "minMembers": 1,
+    "maxMembers": 10,
+    "defaultStatus": "НОВИЧКИ",
+    "readyStatus": "ГОТОВА К МИССИИ",
+    "finalStatus": "МАСТЕРА ПОКЕМОНОВ",
+    "squadMin": 1,
+    "squadMax": 151
+  },
+  "defaultTeam": [
+    {
+      "name": "Всеволод",
+      "active": true
+    },
+    {
+      "name": "Артемий",
+      "active": true
+    },
+    {
+      "name": "Булат",
+      "active": true
+    },
+    {
+      "name": "Аня",
+      "active": true
+    },
+    {
+      "name": "Лера",
+      "active": true
+    },
+    {
+      "name": "Мирослава",
+      "active": true
+    },
+    {
+      "name": "Тата",
+      "active": true
+    },
+    {
+      "name": "Матвей",
+      "active": false
+    }
+  ],
+  "teamScreens": {
+    "createTitle": "POKÉDEX",
+    "createText": "ОЖИДАНИЕ РЕГИСТРАЦИИ КОМАНДЫ",
+    "nameLabel": "Канал ввода команды:",
+    "registerButton": "ЗАПУСТИТЬ РЕГИСТРАЦИЮ",
+    "nameError": "СИГНАЛ ОТКЛОНЁН. Введите название команды ещё раз.",
+    "registeredHeader": "POKÉDEX DATABASE",
+    "registeredTitle": "",
+    "teamLabel": "Команда",
+    "squadLabel": "Отряд",
+    "statusLabel": "СТАТУС:",
+    "phaseRegistration": "РЕГИСТРАЦИЯ КОМАНДЫ",
+    "phaseScan": "СКАНИРОВАНИЕ ТРЕНЕРОВ",
+    "phaseConnection": "ЗАЩИЩЁННОЕ СОЕДИНЕНИЕ",
+    "registrationSequence": [
+      {
+        "type": "line",
+        "text": "Регистрация новой команды...",
+        "sound": "scan",
+        "transition": "scan",
+        "delayMs": 700
+      },
+      {
+        "type": "progress",
+        "text": "██████████",
+        "sound": "data",
+        "delayMs": 850
+      },
+      {
+        "type": "success",
+        "text": "✔ Название принято",
+        "sound": "success",
+        "flash": "green",
+        "delayMs": 600
+      },
+      {
+        "type": "line",
+        "text": "Создание отряда...",
+        "sound": "scan",
+        "delayMs": 550
+      },
+      {
+        "type": "progress",
+        "text": "██████████",
+        "sound": "data",
+        "transition": "scan",
+        "delayMs": 850
+      },
+      {
+        "type": "success",
+        "text": "✔ Отряд №{{squadNumber}} создан",
+        "sound": "connect",
+        "flash": "green",
+        "delayMs": 650
+      },
+      {
+        "type": "line",
+        "text": "Регистрация завершена.",
+        "sound": "success",
+        "delayMs": 700
+      }
+    ],
+    "scanIntro": [
+      "Сканирование окружающей территории...",
+      "Поиск тренеров..."
+    ],
+    "scanNameDelayMs": 820,
+    "scanFinalPauseMs": 2600,
+    "scanTextPrintMs": 360,
+    "scanFlashMs": 720,
+    "noMembersText": "Тренеры не обнаружены. Использую командный канал.",
+    "scanCompleteText": "✔ Обнаружено {{count}} тренеров",
+    "autoConfirmText": "✔ Состав команды подтверждён",
+    "continueText": "Продолжаю подключение...",
+    "autoContinueDelayMs": 1200,
+    "connectionSequence": [
+      {
+        "type": "line",
+        "text": "Установка защищённого соединения...",
+        "sound": "scan",
+        "transition": "scan",
+        "delayMs": 700
+      },
+      {
+        "type": "progress",
+        "text": "██████████",
+        "sound": "data",
+        "delayMs": 850
+      },
+      {
+        "type": "success",
+        "text": "Соединение установлено.",
+        "sound": "connect",
+        "flash": "green",
+        "delayMs": 700
+      },
+      {
+        "type": "line",
+        "text": "Поиск лаборатории профессора Оука...",
+        "sound": "scan",
+        "delayMs": 700
+      },
+      {
+        "type": "progress",
+        "text": "██████████",
+        "sound": "data",
+        "transition": "scan",
+        "delayMs": 850
+      },
+      {
+        "type": "success",
+        "text": "Связь установлена.",
+        "sound": "success",
+        "flash": "green",
+        "delayMs": 700
+      },
+      {
+        "type": "line",
+        "text": "Входящая передача...",
+        "sound": "incoming",
+        "transition": "scan",
+        "delayMs": 900
+      },
+      {
+        "type": "success",
+        "text": "▶ Воспроизведение сообщения",
+        "sound": "success",
+        "flash": "green",
+        "delayMs": 550
+      }
+    ],
+    "professorConfirmation": "Отлично. Команда \"{{teamName}}\" успешно зарегистрирована. Отряд №{{squadNumber}} добавлен в базу данных.",
+    "neutralConfirmation": "Отлично. Команда успешно зарегистрирована. Отряд добавлен в базу данных.",
+    "waitingText": ""
+  },
+  "boot": {
+    "systemTitle": "СИСТЕМА POKÉDEX",
+    "initializingText": "ИНИЦИАЛИЗАЦИЯ...",
+    "readyText": "СИСТЕМА ГОТОВА",
+    "connectedText": "СОЕДИНЕНИЕ УСТАНОВЛЕНО"
+  },
+  "audio": {
+    "power": "audio/power.wav",
+    "boot": "audio/boot.wav",
+    "button": "audio/button.wav",
+    "incoming": "audio/incoming.wav",
+    "oak": "audio/oak01.mp3",
+    "scan": "audio/scan.wav",
+    "connect": "audio/connect.wav",
+    "data": "audio/data.wav",
+    "ambient": "audio/ambient_hum.wav",
+    "success": "audio/mission_success.wav",
+    "failed": "audio/mission_failed.wav",
+    "victory": "audio/victory.wav"
+  },
+  "message": {
+    "title": "ВХОДЯЩЕЕ СООБЩЕНИЕ",
+    "priorityLabel": "Приоритет",
+    "priorityValue": "ВЫСОКИЙ",
+    "senderLabel": "Отправитель",
+    "acceptButton": "ПРИНЯТЬ",
+    "secureChannelText": "ЗАЩИЩЕННЫЙ КАНАЛ",
+    "receivingText": "ПРИЁМ СИГНАЛА...",
+    "fallbackLabel": "ПЕРЕДАЧА ПРОФЕССОРА ОУКА",
+    "frameLabel": "КАДР",
+    "receivedText": "Получен новый сигнал.",
+    "coordinatesText": "Источник: Пикачу. Поиск координат...",
+    "startButton": "НАЧАТЬ ПОИСК",
+    "audio": "audio/oak01.mp3",
+    "slides": [
+      "images/professor-oak.png"
+    ]
+  },
+  "quest": {
+    "missionLabel": "МИССИЯ",
+    "savedLabel": "СПАСЕНО ПОКЕМОНОВ",
+    "inputLabel": "Введите код идентификации",
+    "checkButton": "ПРОВЕРИТЬ",
+    "failureText": "Код неверен. Сверьте карточку и попробуйте ещё раз.",
+    "successTitle": "ПРОВЕРКА ЗАВЕРШЕНА"
+  },
+  "final": {
+    "eyebrow": "ОПЕРАЦИЯ ЗАВЕРШЕНА",
+    "title": "ЛАБОРАТОРИЯ ВОССТАНОВЛЕНА. ВСЕ ПОКЕМОНЫ ВЕРНУЛИСЬ ДОМОЙ.",
+    "teamLabel": "КОМАНДА",
+    "becomesText": "Ваш новый статус:",
+    "masterTitle": "КОМАНДА МАСТЕРОВ ПОКЕМОНОВ",
+    "sealText": "СТАТУС КОМАНДЫ:\nАКТИВНА",
+    "teamMessage": "Сегодня вы не просто нашли покемонов. Вы работали как настоящая команда, помогали друг другу, решали сложные задачи и не сдавались.",
+    "membersTitle": "СОСТАВ КОМАНДЫ:",
+    "certificateTitle": "СЕРТИФИКАТ ОТРЯДА",
+    "certificateText": "успешно восстановила лабораторию профессора Оука и получила статус:"
+  },
+  "diagnostics": [
+    "Связь стабильна",
+    "Поиск покемонов...",
+    "Сканирование...",
+    "GPS активен",
+    "Канал защищён",
+    "Ожидание сигнала...",
+    "Радар синхронизирован",
+    "Батарея стабильна",
+    "Лаборатория Оука на связи"
+  ],
+  "scenes": {
+    "registration": {
+      "background": "images/boot.svg",
+      "portrait": "",
+      "illustration": "images/logo.svg",
+      "video": "",
+      "voice": "",
+      "music": "",
+      "timeline": "",
+      "effects": [
+        "audio/scan.wav",
+        "audio/connect.wav",
+        "audio/data.wav"
+      ],
+      "slides": []
+    },
+    "incoming": {
+      "background": "images/incoming.svg",
+      "portrait": "images/professor-oak.png",
+      "illustration": "",
+      "video": "",
+      "voice": "audio/oak01.mp3",
+      "music": "",
+      "timeline": "timelines/oak_intro.json",
+      "effects": [
+        "audio/incoming.wav"
+      ],
+      "slides": [
+        "images/message01.svg",
+        "images/message02.svg",
+        "images/message03.svg",
+        "images/message04.svg",
+        "images/message05.svg"
+      ],
+      "visuals": [
+        "images/professor-oak.png"
+      ]
+    }
+  },
+  "ranks": [
+    "Новичок",
+    "Первый фрагмент",
+    "Доверие",
+    "Командный цветок",
+    "Огонь дружбы",
+    "Победители Команды R",
+    "Система восстановлена",
+    "Мастера покемонов"
+  ]
+}

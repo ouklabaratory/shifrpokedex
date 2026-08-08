@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>POKÉDEX Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <main class="admin-shell">
+    <header>
+      <div>
+        <p class="eyebrow">Родительская панель</p>
+        <h1>Настройка квеста</h1>
+      </div>
+      <a href="index.html">Открыть Покедекс</a>
+    </header>
+
+    <section class="panel">
+      <h2>Основные настройки</h2>
+      <div class="grid">
+        <label>Название устройства <input id="deviceName"></label>
+        <label>Профессор <input id="professorName"></label>
+        <label>Громкость эффектов <input id="effectsVolume" type="number" min="0" max="1" step="0.05"></label>
+        <label>Скорость смены слайдов, мс <input id="slideIntervalMs" type="number" min="500" step="100"></label>
+        <label>Фоновый звук <select id="enableAmbientSound"><option value="true">Включён</option><option value="false">Выключен</option></select></label>
+        <label>Вибрация <select id="enableVibration"><option value="true">Включена</option><option value="false">Выключена</option></select></label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Финальное поздравление</h2>
+      <label>Заголовок <input id="finalTitle"></label>
+      <label>Звание <input id="masterTitle"></label>
+      <label>Печать <textarea id="sealText" rows="3"></textarea></label>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <h2>Состав команды</h2>
+        <button id="addDefaultMember">Добавить строку состава</button>
+      </div>
+      <div class="team-editor" id="defaultTeamEditor"></div>
+      <p class="note">Отмеченные участники появятся во время сканирования Покедекса.</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <h2>Миссии</h2>
+        <button id="addMission">Добавить миссию</button>
+      </div>
+      <div id="missionsEditor"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">
+        <h2>Редактор сценария</h2>
+        <button id="addFlowStep">Добавить этап</button>
+      </div>
+      <div class="scenario-editor" id="scenarioEditor"></div>
+      <p class="note">Порядок этапов можно менять кнопками. Отключённые этапы не попадают в сохранённый сценарий.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Импорт / экспорт проекта</h2>
+      <div class="grid">
+        <label>Импорт проекта <input id="importProjectFile" type="file" accept="application/json"></label>
+        <label>Party Mode <select id="partyMode"><option value="true">Включён</option><option value="false">Выключен</option></select></label>
+        <label>Debug <select id="enableDebugPanel"><option value="true">Включён</option><option value="false">Выключен</option></select></label>
+      </div>
+    </section>
+
+    <section class="actions">
+      <button id="saveLocal">Сохранить для этого устройства</button>
+      <button id="saveProjectFiles">Сохранить в файлы проекта</button>
+      <button id="exportProject">Экспорт проекта</button>
+      <button id="exportConfig">Скачать config.json</button>
+      <button id="exportMissions">Скачать missions.json</button>
+      <button id="resetLocal">Сбросить локальные изменения</button>
+      <p class="admin-status" id="adminStatus" role="status" aria-live="polite"></p>
+    </section>
+
+    <p class="note">Кнопка локального сохранения работает только в текущем браузере. Чтобы Chrome, другой браузер или опубликованная версия увидели изменения, используйте `Сохранить в файлы проекта` или скачайте JSON-файлы и замените ими файлы проекта.</p>
+  </main>
+  <script src="admin.js?v=pikachu-energy1"></script>
+</body>
+</html>

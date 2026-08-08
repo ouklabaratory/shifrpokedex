@@ -1,0 +1,118 @@
+{
+  "start": "boot",
+  "steps": [
+    {
+      "id": "boot",
+      "type": "boot",
+      "next": "team_create"
+    },
+    {
+      "id": "team_create",
+      "type": "teamCreate",
+      "next": "team_registered"
+    },
+    {
+      "id": "team_registered",
+      "type": "teamRegistered",
+      "next": "oak_intro"
+    },
+    {
+      "id": "oak_intro",
+      "type": "audio",
+      "audio": "audio/oak01.mp3",
+      "timeline": "timelines/oak_intro.json",
+      "next": "mission_1"
+    },
+    {
+      "id": "mission_1",
+      "type": "mission",
+      "missionId": 1,
+      "next": "oak_after_pikachu_incoming"
+    },
+    {
+      "id": "oak_after_pikachu_incoming",
+      "type": "incoming",
+      "next": "oak_after_pikachu"
+    },
+    {
+      "id": "oak_after_pikachu",
+      "type": "audio",
+      "audio": "audio/oak02.mp3",
+      "timeline": "timelines/oak_after_pikachu.json",
+      "next": "pikachu_charge_challenge"
+    },
+    {
+      "id": "pikachu_charge_challenge",
+      "type": "challenge",
+      "eyebrow": "ИСПЫТАНИЕ",
+      "title": "\"ЗАРЯД ПИКАЧУ\"",
+      "description": "Необходимо собрать\nэлектрическую энергию.\n\nНайдите три источника\nэлектричества\nза пределами\nКомандного центра.\n\nВАЖНО\n\nВся команда должна\nодновременно коснуться\nкаждого источника.\n\nКомандный центр\nне считается.",
+      "buttonLabel": "НАЧАТЬ ИСПЫТАНИЕ",
+      "next": "pikachu_energy_check"
+    },
+    {
+      "id": "pikachu_energy_check",
+      "type": "energyCheck",
+      "eyebrow": "ПОДТВЕРЖДЕНИЕ",
+      "title": "",
+      "question": "Вся команда\nсобрала энергию?",
+      "yesLabel": "ДА",
+      "noLabel": "НЕТ",
+      "transferTitle": "ПЕРЕДАЧА ЭНЕРГИИ",
+      "progressValues": [
+        10,
+        31,
+        57,
+        84,
+        100
+      ],
+      "screens": [
+        "⚡ ПИКАЧУ СПАСЁН\nЭнергия восстановлена.",
+        "Спасено покемонов\n\n1 / 6",
+        "Получен\nпервый фрагмент\nглавного шифра.\n\n■ □ □ □ □ □",
+        "Поиск нового сигнала..."
+      ],
+      "next": "mission_2"
+    },
+    {
+      "id": "mission_2",
+      "type": "mission",
+      "missionId": 2,
+      "next": "mission_3"
+    },
+    {
+      "id": "mission_3",
+      "type": "mission",
+      "missionId": 3,
+      "next": "mission_4"
+    },
+    {
+      "id": "mission_4",
+      "type": "mission",
+      "missionId": 4,
+      "next": "mission_5"
+    },
+    {
+      "id": "mission_5",
+      "type": "mission",
+      "missionId": 5,
+      "next": "mission_6"
+    },
+    {
+      "id": "mission_6",
+      "type": "mission",
+      "missionId": 6,
+      "next": "mission_7"
+    },
+    {
+      "id": "mission_7",
+      "type": "mission",
+      "missionId": 7,
+      "next": "victory"
+    },
+    {
+      "id": "victory",
+      "type": "victory"
+    }
+  ]
+}

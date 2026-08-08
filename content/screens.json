@@ -1,0 +1,28 @@
+{
+  "screens": {
+    "boot": {
+      "component": "boot",
+      "animation": "wake"
+    },
+    "team_create": {
+      "component": "teamCreate",
+      "animation": "scan"
+    },
+    "team_registered": {
+      "component": "teamRegistered",
+      "animation": "scan"
+    },
+    "message": {
+      "component": "message",
+      "animation": "glitch"
+    },
+    "mission": {
+      "component": "mission",
+      "animation": "refresh"
+    },
+    "victory": {
+      "component": "victory",
+      "animation": "confetti"
+    }
+  }
+}

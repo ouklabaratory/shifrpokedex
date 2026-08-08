@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#041109"/>
+  <rect x="70" y="90" width="660" height="330" fill="#0c1f14" stroke="#4cff8d" stroke-width="6"/>
+  <path d="M140 330h520" stroke="#4cff8d" stroke-width="7"/>
+  <path d="M190 300c60-122 140-122 200 0 54-86 132-86 220 0" fill="none" stroke="#e9ff78" stroke-width="11"/>
+  <text x="400" y="172" fill="#ff4056" font-size="34" text-anchor="middle" font-family="Verdana">MISSION READY</text>
+  <text x="400" y="488" fill="#d8ffe5" font-size="34" text-anchor="middle" font-family="Verdana">НАЧНИ ОПЕРАЦИЮ СПАСЕНИЯ</text>
+</svg>

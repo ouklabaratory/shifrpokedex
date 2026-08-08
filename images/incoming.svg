@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#080d09"/>
+  <rect x="82" y="126" width="636" height="348" fill="#102018" stroke="#51ff89" stroke-width="8"/>
+  <path d="M116 160 400 336 684 160" fill="none" stroke="#ffd75d" stroke-width="14"/>
+  <text x="400" y="414" fill="#d8ffe5" font-size="40" text-anchor="middle" font-family="Verdana">INCOMING TRANSMISSION</text>
+</svg>

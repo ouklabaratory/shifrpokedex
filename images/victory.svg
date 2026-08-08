@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#120d02"/>
+  <circle cx="400" cy="250" r="150" fill="#f6ce57" stroke="#fff2a8" stroke-width="12"/>
+  <path d="M400 98 442 205 558 212 468 286 496 400 400 338 304 400 332 286 242 212 358 205z" fill="#fff6bf"/>
+  <text x="400" y="512" fill="#fff2a8" font-size="42" text-anchor="middle" font-family="Verdana">MISSION COMPLETE</text>
+</svg>

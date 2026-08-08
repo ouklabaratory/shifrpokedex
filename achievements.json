@@ -1,0 +1,25 @@
+{
+  "achievements": [
+    {
+      "id": "pikachu_found",
+      "title": "Пикачу найден",
+      "description": "Отряд подтвердил первый код и получил первый фрагмент шифра",
+      "icon": "images/badge01.svg",
+      "missionId": 1
+    },
+    {
+      "id": "half_way",
+      "title": "Три фрагмента собраны",
+      "description": "Команда спасла Пикачу, Иви и Бульбазавра",
+      "icon": "images/badge02.svg",
+      "missionId": 3
+    },
+    {
+      "id": "lab_restored",
+      "title": "Лаборатория восстановлена",
+      "description": "Главный шифр 975384 введён, операция завершена",
+      "icon": "images/badge03.svg",
+      "missionId": 7
+    }
+  ]
+}

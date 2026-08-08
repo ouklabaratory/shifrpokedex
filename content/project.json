@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "title": "POKÉDEX // Secret Link",
+  "sourceDocument": "Книга ведущего версия 2.docx",
+  "files": {
+    "config": "config.json",
+    "missions": "missions.json",
+    "flow": "flow.json",
+    "achievements": "achievements.json",
+    "screens": "content/screens.json",
+    "texts": "content/texts.json",
+    "images": "content/images.json",
+    "audio": "content/audio.json",
+    "effects": "content/effects.json",
+    "codes": "content/codes.json"
+  },
+  "timelineRoot": "timelines/",
+  "assetRoots": {
+    "images": "images/",
+    "audio": "audio/"
+  }
+}

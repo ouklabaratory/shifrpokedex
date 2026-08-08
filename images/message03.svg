@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#05110c"/>
+  <rect x="82" y="80" width="636" height="404" rx="18" fill="#11261b" stroke="#4cff8d" stroke-width="5"/>
+  <path d="M150 390 282 250l88 86 112-154 168 208" fill="none" stroke="#e9ff78" stroke-width="12" stroke-linejoin="round"/>
+  <g fill="#4cff8d">
+    <circle cx="282" cy="250" r="14"/>
+    <circle cx="370" cy="336" r="14"/>
+    <circle cx="482" cy="182" r="14"/>
+    <circle cx="650" cy="390" r="14"/>
+  </g>
+  <text x="400" y="540" fill="#d8ffe5" font-size="32" text-anchor="middle" font-family="Verdana">КООРДИНАТЫ ЗАШИФРОВАНЫ</text>
+</svg>

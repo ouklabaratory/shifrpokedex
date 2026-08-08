@@ -1,0 +1,18 @@
+{
+  "effects": {
+    "fade": { "durationMs": 500 },
+    "zoom": { "durationMs": 500 },
+    "flash": { "durationMs": 720, "color": "green" },
+    "shake": { "durationMs": 360 },
+    "typing": { "speedMs": 34 },
+    "scan": { "durationMs": 520 },
+    "glitch": { "durationMs": 1500 },
+    "pulse": { "durationMs": 900 },
+    "warning": { "durationMs": 620, "color": "red" },
+    "confetti": { "durationMs": 2600 },
+    "loading": { "durationMs": 3000 },
+    "progress": { "durationMs": 850 },
+    "spark": { "durationMs": 420 },
+    "signal": { "durationMs": 900 }
+  }
+}

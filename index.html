@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#8f1018">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="POKÉDEX">
+  <title>POKEDEX // SECRET LINK</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/icon-maskable.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="device" id="device" aria-live="polite">
+    <div class="case-lip top"></div>
+    <div class="case-lip bottom"></div>
+
+    <section class="pokedex-shell">
+      <header class="hardware-bar">
+        <div class="lens" aria-hidden="true">
+          <span></span>
+        </div>
+        <div class="led-stack" aria-hidden="true">
+          <i class="led red"></i>
+          <i class="led yellow"></i>
+          <i class="led green" id="powerLed"></i>
+        </div>
+        <div class="brand-mark" id="brandMark">POKÉDEX</div>
+      </header>
+
+      <section class="screen-bezel">
+        <div class="speaker-grille" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="screen" id="screen">
+          <div class="scanlines" aria-hidden="true"></div>
+          <div class="noise" aria-hidden="true"></div>
+          <div class="transition" id="transition" aria-hidden="true"></div>
+          <div class="flash" id="flash" aria-hidden="true"></div>
+
+          <div class="hud" id="hud" hidden>
+            <div class="hud-left">
+              <span id="squadHud">ОТРЯД ---</span>
+              <span id="savedLabel"></span>
+              <strong id="savedCounter">0 / 8</strong>
+            </div>
+            <div class="progress-track" aria-label="Общий прогресс">
+              <span id="progressBar"></span>
+            </div>
+            <div class="hud-right">
+              <span id="clock">--:--</span>
+              <div class="signal" aria-label="Сигнал"><i></i><i></i><i></i></div>
+              <div class="battery" aria-label="Батарея"><span></span></div>
+            </div>
+          </div>
+
+          <div class="radar" id="radar" aria-hidden="true" hidden>
+            <span></span>
+          </div>
+
+          <div class="diagnostics" id="diagnostics" aria-hidden="true" hidden>LINK OK // RADAR SYNC</div>
+
+          <section class="view active" id="bootView">
+            <div class="boot-logo">
+              <div class="pixel-ball" aria-hidden="true"><span></span></div>
+              <h1>POKÉDEX</h1>
+            </div>
+            <div class="terminal-lines">
+              <p id="bootTitle"></p>
+              <p id="bootStatus"></p>
+            </div>
+            <div class="boot-loader" id="bootLoader" hidden><span></span></div>
+          </section>
+
+          <section class="view" id="teamCreateView">
+            <div class="team-panel device-entry">
+              <p class="eyebrow" id="teamCreateTitle"></p>
+              <p id="teamCreateText">ОЖИДАНИЕ РЕГИСТРАЦИИ КОМАНДЫ</p>
+              <label class="code-label" id="teamNameLabel" for="teamNameInput"></label>
+              <input id="teamNameInput" class="code-input team-input" autocomplete="off" maxlength="30">
+              <button class="action success" id="registerTeam"></button>
+              <p class="mission-feedback error" id="teamNameError"></p>
+            </div>
+          </section>
+
+          <section class="view" id="teamRegisteredView">
+            <div class="team-panel database">
+              <p class="eyebrow" id="teamRegisteredHeader"></p>
+              <h2 id="teamRegisteredTitle">ОЖИДАНИЕ РЕГИСТРАЦИИ КОМАНДЫ</h2>
+              <p class="registration-phase" id="registrationPhase"></p>
+              <dl>
+                <div><dt id="registeredTeamLabel"></dt><dd id="registeredTeamName">-</dd></div>
+                <div><dt id="registeredSquadLabel"></dt><dd id="registeredSquadNumber">-</dd></div>
+                <div><dt id="registeredStatusLabel"></dt><dd id="registeredStatus">-</dd></div>
+              </dl>
+              <div class="registration-procedure" id="registrationProcedure"></div>
+              <div class="scan-list" id="scanList" hidden></div>
+              <p class="terminal-ok" id="registeredWaiting"></p>
+              <div class="mini-loader"><span></span><span></span><span></span></div>
+            </div>
+          </section>
+
+          <section class="view" id="messageView">
+            <div class="alert-panel" id="incomingPanel">
+              <p class="eyebrow" id="incomingTitle"></p>
+              <dl>
+                <div><dt id="priorityLabel"></dt><dd id="priorityValue"></dd></div>
+                <div><dt id="senderLabel"></dt><dd id="senderValue"></dd></div>
+              </dl>
+              <button class="action danger" id="acceptMessage"></button>
+            </div>
+
+            <div class="playback-panel" id="playbackPanel" hidden>
+              <div class="message-frame" id="messageFrame">
+                <img id="messageImage" alt="Передача профессора Оука">
+                <div class="image-fallback" id="messageFallback"></div>
+              </div>
+              <div class="transmission-meta">
+                <span id="secureChannel"></span>
+                <strong id="transmissionStatus"></strong>
+              </div>
+              <div class="playback-actions" id="playbackActions" hidden>
+                <button class="action secondary" id="replayAudio">ПРОСЛУШАТЬ ЕЩЁ РАЗ</button>
+                <button class="action success" id="continueAudio">ДАЛЬШЕ</button>
+              </div>
+            </div>
+
+            <div class="coords-panel" id="coordsPanel" hidden>
+              <p class="terminal-ok" id="coordsReceived"></p>
+              <p id="coordsStatus"></p>
+              <div class="mini-loader"><span></span><span></span><span></span></div>
+              <button class="action success" id="startMission" hidden></button>
+            </div>
+          </section>
+
+          <section class="view" id="missionView">
+            <div class="mission-top">
+              <p id="missionNumber">МИССИЯ 01</p>
+              <strong id="teamRank">Новичок</strong>
+            </div>
+            <div class="mission-image-wrap" id="missionFrame">
+              <img id="missionImage" alt="Изображение миссии">
+              <div class="image-fallback mission" id="missionFallback"></div>
+            </div>
+            <h2 id="missionTitle"></h2>
+            <p id="missionDescription"></p>
+            <label class="code-label" id="codeLabel" for="secretCode"></label>
+            <input id="secretCode" class="code-input" inputmode="text" autocomplete="off" spellcheck="false">
+            <button class="action primary" id="checkCode"></button>
+            <button class="action danger" id="missionSecondaryAction" hidden></button>
+            <p class="mission-feedback" id="missionFeedback"></p>
+          </section>
+
+          <section class="view" id="finalView">
+            <div class="confetti" id="confetti" aria-hidden="true"></div>
+            <p class="eyebrow" id="finalEyebrow"></p>
+            <h2 id="finalTitle"></h2>
+            <p id="finalTeamLabel"></p>
+            <strong class="team-name" id="finalTeamName">ОЖИДАНИЕ РЕГИСТРАЦИИ КОМАНДЫ</strong>
+            <p class="squad-final" id="finalSquadNumber">ОТРЯД №---</p>
+            <p id="finalBecomes"></p>
+            <strong class="master-title" id="finalMasterTitle"></strong>
+            <p class="team-message" id="finalTeamMessage"></p>
+            <div class="team-roster" id="finalMembers"></div>
+            <div class="certificate" id="certificate"></div>
+            <div class="seal" id="finalSeal">МИССИЯ<br>ВЫПОЛНЕНА</div>
+          </section>
+
+          <section class="resume-modal" id="resumeModal" hidden>
+            <div class="resume-box">
+              <p class="eyebrow">ОБНАРУЖЕНО НЕЗАВЕРШЁННОЕ ПРОХОЖДЕНИЕ</p>
+              <p>Продолжить с сохранённого места?</p>
+              <button class="action success" id="resumeRun">ПРОДОЛЖИТЬ</button>
+              <button class="action danger" id="restartRun">НАЧАТЬ ЗАНОВО</button>
+            </div>
+          </section>
+
+          <section class="test-panel" id="testPanel" hidden>
+            <div class="test-box">
+              <div class="test-head">
+                <strong>TEST MODE</strong>
+                <button id="closeTestPanel">×</button>
+              </div>
+              <div class="test-grid">
+                <label>Экран <select id="testStepSelect"></select></label>
+                <button id="testGoStep">Открыть экран</button>
+                <label>Миссия <select id="testMissionSelect"></select></label>
+                <button id="testGoMission">Открыть миссию</button>
+                <label>Аудио <select id="testAudioSelect"></select></label>
+                <button id="testPlayAudio">Проиграть аудио</button>
+                <button id="testFlash">Анимация вспышки</button>
+                <button id="testResetProgress">Сброс прогресса</button>
+                <button id="testClearStorage">Очистить LocalStorage</button>
+              </div>
+              <pre id="testState"></pre>
+            </div>
+          </section>
+
+          <aside class="debug-panel" id="debugPanel" hidden>
+            <span id="debugState">state: -</span>
+            <span id="debugMission">mission: -</span>
+            <span id="debugJson">json: -</span>
+            <span id="debugFps">fps: -</span>
+            <span id="debugResources">resources: -</span>
+          </aside>
+        </div>
+      </section>
+
+      <footer class="controls" aria-hidden="true">
+        <div class="dpad"><span></span></div>
+        <div class="status-strip">
+          <i></i><i></i><i></i><i></i>
+        </div>
+        <div class="round-buttons"><span></span><span></span></div>
+      </footer>
+    </section>
+  </main>
+  <script src="script.js?v=pikachu-energy1"></script>
+</body>
+</html>

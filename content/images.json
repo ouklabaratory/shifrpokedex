@@ -1,0 +1,14 @@
+{
+  "images": {
+    "logo": "images/logo.svg",
+    "boot": "images/boot.svg",
+    "incoming": "images/incoming.svg",
+    "victory": "images/victory.svg",
+    "badges": [
+      "images/badge01.svg",
+      "images/badge02.svg",
+      "images/badge03.svg"
+    ],
+    "professorOak": "images/professor-oak.png"
+  }
+}

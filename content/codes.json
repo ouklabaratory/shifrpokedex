@@ -1,0 +1,56 @@
+{
+  "mainCipher": {
+    "locked": true,
+    "length": 6,
+    "answer": "975384",
+    "rule": "Первые цифры кодов миссий в обратном порядке: 9 7 5 3 8 4.",
+    "visibleFragments": [],
+    "hiddenFragments": [1, 2, 3, 4, 5, 6],
+    "emptySymbol": "□",
+    "collectedSymbol": "■",
+    "missionCodes": [
+      {
+        "missionId": 1,
+        "pokemon": "Пикачу",
+        "code": "4827",
+        "fragmentIndex": 1
+      },
+      {
+        "missionId": 2,
+        "pokemon": "Иви",
+        "code": "8426",
+        "fragmentIndex": 2
+      },
+      {
+        "missionId": 3,
+        "pokemon": "Бульбазавр",
+        "code": "3168",
+        "fragmentIndex": 3
+      },
+      {
+        "missionId": 4,
+        "pokemon": "Чармандер",
+        "code": "5914",
+        "fragmentIndex": 4
+      },
+      {
+        "missionId": 5,
+        "pokemon": "Сквиртл",
+        "code": "7305",
+        "fragmentIndex": 5
+      },
+      {
+        "missionId": 6,
+        "pokemon": "Ротом",
+        "code": "9142",
+        "fragmentIndex": 6
+      },
+      {
+        "missionId": 7,
+        "pokemon": "Главный компьютер",
+        "code": "975384",
+        "fragmentIndex": "FINAL"
+      }
+    ]
+  }
+}

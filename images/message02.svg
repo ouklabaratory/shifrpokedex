@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#021008"/>
+  <g fill="none" stroke="#4cff8d" stroke-width="4" opacity=".7">
+    <circle cx="400" cy="288" r="220"/>
+    <circle cx="400" cy="288" r="150"/>
+    <circle cx="400" cy="288" r="78"/>
+    <path d="M400 66v444M178 288h444"/>
+  </g>
+  <path d="M400 288 590 190" stroke="#e9ff78" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="228" cy="342" r="18" fill="#ff4056"/>
+  <circle cx="568" cy="196" r="14" fill="#4cff8d"/>
+  <text x="400" y="530" fill="#d8ffe5" font-size="32" text-anchor="middle" font-family="Verdana">ОБНАРУЖЕНЫ СИГНАЛЫ ПОКЕМОНОВ</text>
+</svg>

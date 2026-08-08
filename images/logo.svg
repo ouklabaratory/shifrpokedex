@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260">
+  <rect width="800" height="260" fill="#041109"/>
+  <text x="400" y="118" fill="#f4fff5" font-size="74" text-anchor="middle" font-family="Verdana" font-weight="900">POKÉDEX</text>
+  <text x="400" y="182" fill="#51ff89" font-size="28" text-anchor="middle" font-family="Verdana">SECRET LINK SYSTEM</text>
+  <path d="M166 206h468" stroke="#51ff89" stroke-width="6"/>
+</svg>

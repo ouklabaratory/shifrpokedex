@@ -1,0 +1,25 @@
+{
+  "audio": {
+    "click": "audio/button.wav",
+    "beep": "audio/data.wav",
+    "success": "audio/mission_success.wav",
+    "error": "audio/mission_failed.wav",
+    "connection": "audio/connect.wav",
+    "loading": "audio/scan.wav",
+    "signal": "audio/incoming.wav",
+    "ambient": "audio/ambient_hum.wav",
+    "victory": "audio/victory.wav",
+    "oak01": "audio/oak01.mp3",
+    "oak02": "audio/oak02.mp3",
+    "oak03": "audio/oak03.mp3",
+    "oak04": "audio/oak04.mp3",
+    "oak05": "audio/oak05.mp3",
+    "oak06": "audio/oak06.mp3",
+    "oak07": "audio/oak07.mp3",
+    "oak08": "audio/oak08.mp3",
+    "oak09": "audio/oak09.mp3",
+    "oak10": "audio/oak10.mp3",
+    "oak11": "audio/oak11.mp3",
+    "oak12": "audio/oak12.mp3"
+  }
+}

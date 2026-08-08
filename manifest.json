@@ -1,0 +1,25 @@
+{
+  "name": "POKÉDEX // Secret Link",
+  "short_name": "POKÉDEX",
+  "description": "Секретный квестовый Покедекс профессора Оука.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#030504",
+  "theme_color": "#8f1018",
+  "icons": [
+    {
+      "src": "images/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

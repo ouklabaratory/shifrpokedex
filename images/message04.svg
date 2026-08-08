@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#030f09"/>
+  <g transform="translate(400 260)">
+    <circle r="132" fill="#0f2819" stroke="#4cff8d" stroke-width="6"/>
+    <path d="M0-168 34-50 158-50 56 22 96 142 0 68-96 142-56 22-158-50-34-50z" fill="#f4d65b" stroke="#fff3a5" stroke-width="4"/>
+  </g>
+  <text x="400" y="458" fill="#d8ffe5" font-size="34" text-anchor="middle" font-family="Verdana">КОМАНДА ЗАРЕГИСТРИРОВАНА</text>
+  <text x="400" y="508" fill="#4cff8d" font-size="28" text-anchor="middle" font-family="Verdana">ДОСТУП К МИССИИ ОТКРЫТ</text>
+</svg>
