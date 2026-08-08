@@ -52,7 +52,7 @@
       "pokemon": "Иви",
       "audio_before": "audio/mission07.wav",
       "audio_after": "audio/mission_success.wav",
-      "image": "images/mission07.svg",
+      "image": "images/mission02-eevee.svg",
       "background": "",
       "icon": "",
       "missionType": "search",
@@ -70,7 +70,7 @@
       "nextMission": 3,
       "pokemonCard": {
         "name": "Иви",
-        "image": "images/mission07.svg",
+        "image": "images/mission02-eevee.svg",
         "code": "8426",
         "description": "✔ Код подтверждён\n\n✔ Покебол подлинный\n\n✔ Иви найдена\n\nСвязь восстановлена",
         "voice": "audio/mission_success.wav",
