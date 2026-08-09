@@ -1315,7 +1315,9 @@ class QuestApp {
     el.missionView?.classList?.toggle("briefing-mode", this.missionPhase !== "signal" && Boolean(this.activeMissionData.briefingText));
     el.missionView?.classList?.toggle("signal-mode", this.missionPhase === "signal");
     el.missionNumber.textContent = `${this.config.quest.missionLabel} ${String(this.missions.indexOf(mission) + 1).padStart(2, "0")} / ${String(this.missions.length).padStart(2, "0")}`;
-    el.missionTitle.textContent = this.activeMissionData.title;
+    el.missionTitle.textContent = this.missionPhase === "signal"
+      ? (this.activeMissionData.signalTitle ?? this.activeMissionData.title)
+      : (this.activeMissionData.briefingTitle ?? this.activeMissionData.title);
     if (this.missionPhase === "signal") {
       this.renderMissionSignal(0);
     } else {
@@ -1341,6 +1343,7 @@ class QuestApp {
     if (this.missionPhase === "signal") {
       this.startMissionSignalProgress();
     }
+    el.screen.scrollTop = 0;
   }
 
   checkMissionCode() {
@@ -1380,13 +1383,17 @@ class QuestApp {
     if (this.missionPhase !== "signal") return;
     this.missionPhase = "briefing";
     this.clearMissionTimers();
+    el.missionFrame.hidden = Boolean(this.activeMissionData.briefingText);
     el.missionView?.classList?.remove("signal-mode");
+    el.missionView?.classList?.toggle("briefing-mode", Boolean(this.activeMissionData.briefingText));
+    el.missionTitle.textContent = this.activeMissionData.briefingTitle ?? this.activeMissionData.title;
     el.missionDescription.textContent = this.activeMissionData.briefingText || this.activeMissionData.description;
     el.checkCode.hidden = false;
     el.missionSecondaryAction.hidden = true;
     el.checkCode.textContent = this.activeMissionData.actionButtonLabel || this.config.quest.checkButton;
     this.animations.transition("scan");
     this.audio.pattern("data");
+    el.screen.scrollTop = 0;
   }
 
   startMissionSignalProgress() {
@@ -1410,7 +1417,9 @@ class QuestApp {
     const filled = Math.round((value / 100) * blocks);
     const bar = `${"█".repeat(filled)}${"░".repeat(blocks - filled)}`;
     const base = this.activeMissionData.signalText || "";
-    el.missionDescription.textContent = `${base}\n\n${bar}\n${value}%`;
+    el.missionDescription.textContent = this.activeMissionData.signalShowProgress === false
+      ? base
+      : `${base}\n\n${bar}\n${value}%`;
   }
 
   showMissionCardPrompt() {
@@ -1681,6 +1690,9 @@ function missionRuntimeData(mission = {}) {
     signalDelayMs: mission.signalDelayMs || 0,
     signalProgressDurationMs: mission.signalProgressDurationMs || 0,
     signalHoldMs: mission.signalHoldMs || 0,
+    signalTitle: mission.signalTitle,
+    briefingTitle: mission.briefingTitle,
+    signalShowProgress: mission.signalShowProgress !== false,
     showSignalImage: Boolean(mission.showSignalImage),
     actionButtonLabel: mission.actionButtonLabel || "",
     codePromptText: mission.codePromptText || "",
