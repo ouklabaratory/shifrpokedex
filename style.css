@@ -1022,14 +1022,15 @@ dd {
 
 #missionView.briefing-compact #missionDescription {
   padding: 8px;
-  font-size: 0.67rem;
-  line-height: 1.22;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  border-color: rgba(81, 255, 137, 0.52);
 }
 
 #missionView.briefing-compact .action {
-  min-height: 45px;
+  min-height: 52px;
   padding: 9px 10px;
-  font-size: 0.84rem;
+  font-size: 0.92rem;
 }
 
 #missionView.signal-mode {

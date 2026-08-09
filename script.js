@@ -1398,12 +1398,38 @@ class QuestApp {
     this.animations.transition("scan");
     this.audio.pattern("data");
     el.screen.scrollTop = 0;
+    if (this.activeMissionData.briefingSequence?.length) this.runMissionBriefingSequence();
+  }
+
+  async runMissionBriefingSequence() {
+    const sequence = this.activeMissionData.briefingSequence || [];
+    el.checkCode.hidden = true;
+    el.checkCode.disabled = true;
+    for (const item of sequence) {
+      el.missionTitle.textContent = item.title || "";
+      el.missionDescription.textContent = item.text || "";
+      this.audio.pattern(item.sound || "data");
+      this.animations.transition(item.transition || "scan");
+      if (item.flash) this.animations.flash(item.flash);
+      await wait(item.delayMs || 1100);
+    }
+    el.missionTitle.textContent = this.activeMissionData.briefingTitle ?? "";
+    el.missionDescription.textContent = this.activeMissionData.briefingText || this.activeMissionData.description;
+    el.checkCode.hidden = false;
+    el.checkCode.disabled = false;
+    this.audio.pattern("success");
+    this.animations.transition("scan");
+    el.screen.scrollTop = 0;
   }
 
   startMissionSignalProgress() {
     const duration = this.activeMissionData.signalProgressDurationMs || this.activeMissionData.signalDelayMs || 3000;
     const started = performance.now();
     this.renderMissionSignal(0);
+    if (this.activeMissionData.signalEffect) {
+      el.screen.classList.add(this.activeMissionData.signalEffect);
+      this.missionTimers.push(setTimeout(() => el.screen.classList.remove(this.activeMissionData.signalEffect), duration + (this.activeMissionData.signalHoldMs || 700)));
+    }
     const timer = setInterval(() => {
       const progress = Math.min(100, Math.round(((performance.now() - started) / duration) * 100));
       this.renderMissionSignal(progress);
@@ -1703,6 +1729,8 @@ function missionRuntimeData(mission = {}) {
     signalShowProgress: mission.signalShowProgress !== false,
     signalCompact: Boolean(mission.signalCompact),
     briefingCompact: Boolean(mission.briefingCompact),
+    signalEffect: mission.signalEffect || "",
+    briefingSequence: Array.isArray(mission.briefingSequence) ? mission.briefingSequence : [],
     showSignalImage: Boolean(mission.showSignalImage),
     actionButtonLabel: mission.actionButtonLabel || "",
     codePromptText: mission.codePromptText || "",
