@@ -230,8 +230,8 @@
       "briefingCompact": true,
       "preCodeScreens": [
         {
-          "title": "КАРТА МАРШРУТА",
-          "text": "Командный центр отмечен в центре.\nМаршрут уходит за пределы базы.\nВ конце сигнала мигает неизвестная точка.",
+          "title": "",
+          "text": "",
           "buttonLabel": "ДАЛЬШЕ",
           "hideImage": false,
           "compact": true,
