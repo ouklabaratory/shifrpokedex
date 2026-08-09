@@ -1,4 +1,4 @@
-const CACHE_NAME = "pokedex-secret-link-v55";
+﻿const CACHE_NAME = "pokedex-secret-link-v56";
 
 const CORE_ASSETS = [
   "./",
@@ -6,10 +6,10 @@ const CORE_ASSETS = [
   "./admin.html",
   "./admin.css",
   "./admin.js",
-  "./admin.js?v=squirtle-hit-check2",
+  "./admin.js?v=rotom-prelude1",
   "./style.css",
   "./script.js",
-  "./script.js?v=squirtle-hit-check2",
+  "./script.js?v=rotom-prelude1",
   "./config.json",
   "./missions.json",
   "./flow.json",
@@ -31,6 +31,7 @@ const CORE_ASSETS = [
   "./timelines/oak_team_rocket.json",
   "./timelines/oak_squirtle_rescue.json",
   "./timelines/oak_after_squirtle.json",
+  "./timelines/oak_rotom_restore.json",
   "./images/icon.svg",
   "./images/icon-maskable.svg",
   "./images/logo.svg",

@@ -512,6 +512,122 @@
       "type": "audio",
       "audio": "audio/oak09.mp3",
       "timeline": "timelines/oak_after_squirtle.json",
+      "next": "rotom_failure_sequence"
+    },
+    {
+      "id": "rotom_failure_sequence",
+      "type": "sequence",
+      "eyebrow": "ПОКЕДЕКС",
+      "screenDelayMs": 1500,
+      "finalPauseMs": 800,
+      "screens": [
+        {
+          "title": "▒▓░ ДАННЫЕ ПОВРЕЖДЕНЫ ░▓▒",
+          "text": "█▒░█▒░█▒░\n\n... ... ...",
+          "viewClass": "system-failure-mode",
+          "sound": "failed",
+          "transition": "scan",
+          "flash": "red",
+          "delayMs": 2300
+        },
+        {
+          "title": "ОШИБКА",
+          "text": "Ошибка чтения данных.\n\nОшибка связи.\n\nОшибка памяти.",
+          "viewClass": "system-failure-mode",
+          "sound": "failed",
+          "transition": "scan",
+          "flash": "red",
+          "delayMs": 2600
+        },
+        {
+          "title": "",
+          "text": "Последний доступный сигнал...\n\n⚙ РОТОМ",
+          "viewClass": "system-failure-mode",
+          "sound": "data",
+          "transition": "scan",
+          "delayMs": 2400
+        },
+        {
+          "title": "",
+          "text": "Если не восстановить Ротома...\n\nПокедекс отключится.",
+          "viewClass": "blackout-mode",
+          "sound": "failed",
+          "transition": "none",
+          "delayMs": 3000
+        },
+        {
+          "title": "МИССИЯ №6",
+          "text": "РОТОМ",
+          "viewClass": "blackout-mode",
+          "sound": "data",
+          "transition": "scan",
+          "delayMs": 2300
+        },
+        {
+          "title": "",
+          "text": "",
+          "viewClass": "blackout-mode",
+          "sound": "none",
+          "transition": "none",
+          "delayMs": 1800
+        },
+        {
+          "title": "АВАРИЙНЫЙ РЕЖИМ",
+          "text": "Питание нестабильно.",
+          "viewClass": "emergency-mode",
+          "sound": "failed",
+          "transition": "scan",
+          "flash": "red",
+          "delayMs": 2100
+        },
+        {
+          "title": "",
+          "text": "Обнаружен последний\nисточник сигнала.\n\n⚙ РОТОМ",
+          "viewClass": "emergency-mode",
+          "sound": "data",
+          "transition": "scan",
+          "delayMs": 2200
+        },
+        {
+          "title": "Соединение...",
+          "text": "14%\n\nОшибка.\n\nПовторная попытка...",
+          "viewClass": "emergency-mode",
+          "sound": "failed",
+          "transition": "scan",
+          "flash": "red",
+          "delayMs": 2300
+        },
+        {
+          "title": "Соединение...",
+          "text": "14%\n\nОшибка.\n\nПовторная попытка...",
+          "viewClass": "emergency-mode",
+          "sound": "failed",
+          "transition": "scan",
+          "delayMs": 1900
+        }
+      ],
+      "next": "rotom_restore_prompt"
+    },
+    {
+      "id": "rotom_restore_prompt",
+      "type": "challenge",
+      "eyebrow": "ПОКЕДЕКС",
+      "title": "АВАРИЙНЫЙ РЕЖИМ",
+      "description": "Питание нестабильно.\n\nОбнаружен последний\nисточник сигнала.\n\n⚙ РОТОМ\n\nСоединение...\n\n14%\n\nОшибка.\n\nПовторная попытка...",
+      "buttonLabel": "ВОССТАНОВИТЬ СВЯЗЬ",
+      "viewClass": "emergency-mode",
+      "next": "oak_rotom_restore_incoming"
+    },
+    {
+      "id": "oak_rotom_restore_incoming",
+      "type": "incoming",
+      "next": "oak_rotom_restore"
+    },
+    {
+      "id": "oak_rotom_restore",
+      "type": "audio",
+      "audio": "audio/oak10.mp3",
+      "timeline": "timelines/oak_rotom_restore.json",
       "next": "mission_6"
     },
     {
