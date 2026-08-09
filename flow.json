@@ -194,6 +194,24 @@
       "next": "mission_5"
     },
     {
+      "id": "oak_charmander_route_incoming",
+      "type": "incoming",
+      "next": "oak_charmander_route"
+    },
+    {
+      "id": "oak_charmander_route",
+      "type": "audio",
+      "audio": "audio/oak05.mp3",
+      "timeline": "timelines/oak_charmander_route.json",
+      "next": "mission_4_code"
+    },
+    {
+      "id": "mission_4_code",
+      "type": "missionCode",
+      "missionId": 4,
+      "next": "mission_5"
+    },
+    {
       "id": "mission_5",
       "type": "mission",
       "missionId": 5,

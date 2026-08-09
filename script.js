@@ -564,6 +564,7 @@ class StateMachine {
       challenge: (step) => this.app.enterChallenge(step),
       energyCheck: (step) => this.app.enterEnergyCheck(step),
       mission: (step) => this.app.enterMission(step),
+      missionCode: (step) => this.app.enterMissionCode(step),
       victory: (step) => this.app.enterVictory(step)
     };
   }
@@ -594,6 +595,7 @@ class StateMachine {
       challenge: "Challenge",
       energyCheck: "EnergyCheck",
       mission: "Mission",
+      missionCode: "Mission",
       victory: "Victory"
     }[type] || "Unknown";
   }
@@ -1382,6 +1384,12 @@ class QuestApp {
     el.screen.scrollTop = 0;
   }
 
+  enterMissionCode(step) {
+    this.enterMission(step);
+    this.clearMissionTimers();
+    this.showMissionCardPrompt();
+  }
+
   checkMissionCode() {
     if (this.stateMachine.current === "Challenge") {
       this.stateMachine.next();
@@ -1469,6 +1477,10 @@ class QuestApp {
   advanceMissionPreCodeScreen() {
     this.preCodeScreenIndex += 1;
     if (this.preCodeScreenIndex >= this.activeMissionData.preCodeScreens.length) {
+      if (this.activeMissionData.preCodeNextStep) {
+        this.stateMachine.go(this.activeMissionData.preCodeNextStep);
+        return;
+      }
       this.showMissionCardPrompt();
       return;
     }
@@ -1479,6 +1491,7 @@ class QuestApp {
     const screen = this.activeMissionData.preCodeScreens[this.preCodeScreenIndex] || {};
     this.missionPhase = "preCode";
     el.missionFrame.hidden = screen.hideImage !== false;
+    if (screen.image) this.renderMedia("mission", { type: typeFromSource(screen.image), src: screen.image, alt: screen.title || this.activeMissionData.title });
     el.missionView?.classList?.remove("signal-mode");
     el.missionView?.classList?.remove("signal-compact");
     el.missionView?.classList?.toggle("briefing-mode", Boolean(screen.text));
@@ -1814,6 +1827,7 @@ function missionRuntimeData(mission = {}) {
     enterCodeButtonLabel: mission.enterCodeButtonLabel || "",
     codeEntryText: mission.codeEntryText || "",
     preCodeScreens: Array.isArray(mission.preCodeScreens) ? mission.preCodeScreens : [],
+    preCodeNextStep: mission.preCodeNextStep || "",
     postSuccessText: mission.postSuccessText,
     successText: successScreen.text || mission.successText || card.description || "",
     successEffect: successScreen.effect || card.successEffect || "success"

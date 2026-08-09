@@ -227,7 +227,18 @@
       "showSignalImage": true,
       "signalTitle": "",
       "briefingTitle": "",
-      "briefingCompact": true
+      "briefingCompact": true,
+      "preCodeScreens": [
+        {
+          "title": "КАРТА МАРШРУТА",
+          "text": "Командный центр отмечен в центре.\nМаршрут уходит за пределы базы.\nВ конце сигнала мигает неизвестная точка.",
+          "buttonLabel": "ДАЛЬШЕ",
+          "hideImage": false,
+          "compact": true,
+          "image": "images/charmander-route-map.svg"
+        }
+      ],
+      "preCodeNextStep": "oak_charmander_route_incoming"
     },
     {
       "id": 5,
