@@ -1,4 +1,4 @@
-const CACHE_NAME = "pokedex-secret-link-v46";
+const CACHE_NAME = "pokedex-secret-link-v47";
 
 const CORE_ASSETS = [
   "./",
@@ -6,10 +6,10 @@ const CORE_ASSETS = [
   "./admin.html",
   "./admin.css",
   "./admin.js",
-  "./admin.js?v=bulbasaur-diagnostic1",
+  "./admin.js?v=bulbasaur-precode1",
   "./style.css",
   "./script.js",
-  "./script.js?v=bulbasaur-diagnostic1",
+  "./script.js?v=bulbasaur-precode1",
   "./config.json",
   "./missions.json",
   "./flow.json",

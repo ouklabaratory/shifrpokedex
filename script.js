@@ -1358,7 +1358,12 @@ class QuestApp {
       return;
     }
     if (this.missionPhase === "briefing") {
-      this.showMissionCardPrompt();
+      if (this.activeMissionData.preCodeScreens.length) this.startMissionPreCodeScreens();
+      else this.showMissionCardPrompt();
+      return;
+    }
+    if (this.missionPhase === "preCode") {
+      this.advanceMissionPreCodeScreen();
       return;
     }
     if (this.missionPhase === "card") {
@@ -1419,6 +1424,44 @@ class QuestApp {
     el.checkCode.disabled = false;
     this.audio.pattern("success");
     this.animations.transition("scan");
+    el.screen.scrollTop = 0;
+  }
+
+  startMissionPreCodeScreens() {
+    this.preCodeScreenIndex = 0;
+    this.showMissionPreCodeScreen();
+  }
+
+  advanceMissionPreCodeScreen() {
+    this.preCodeScreenIndex += 1;
+    if (this.preCodeScreenIndex >= this.activeMissionData.preCodeScreens.length) {
+      this.showMissionCardPrompt();
+      return;
+    }
+    this.showMissionPreCodeScreen();
+  }
+
+  showMissionPreCodeScreen() {
+    const screen = this.activeMissionData.preCodeScreens[this.preCodeScreenIndex] || {};
+    this.missionPhase = "preCode";
+    el.missionFrame.hidden = screen.hideImage !== false;
+    el.missionView?.classList?.remove("signal-mode");
+    el.missionView?.classList?.remove("signal-compact");
+    el.missionView?.classList?.toggle("briefing-mode", Boolean(screen.text));
+    el.missionView?.classList?.toggle("briefing-compact", Boolean(screen.compact));
+    el.missionTitle.textContent = screen.title || "";
+    el.missionDescription.textContent = screen.text || "";
+    el.codeLabel.hidden = true;
+    el.secretCode.hidden = true;
+    el.missionSecondaryAction.hidden = true;
+    el.checkCode.hidden = false;
+    el.checkCode.disabled = false;
+    el.checkCode.textContent = screen.buttonLabel || "ДАЛЬШЕ";
+    el.missionFeedback.textContent = "";
+    el.missionFeedback.className = "mission-feedback";
+    this.animations.transition("scan");
+    this.audio.pattern(screen.sound || "data");
+    if (screen.flash) this.animations.flash(screen.flash);
     el.screen.scrollTop = 0;
   }
 
@@ -1736,6 +1779,7 @@ function missionRuntimeData(mission = {}) {
     codePromptText: mission.codePromptText || "",
     enterCodeButtonLabel: mission.enterCodeButtonLabel || "",
     codeEntryText: mission.codeEntryText || "",
+    preCodeScreens: Array.isArray(mission.preCodeScreens) ? mission.preCodeScreens : [],
     postSuccessText: mission.postSuccessText,
     successText: successScreen.text || mission.successText || card.description || "",
     successEffect: successScreen.effect || card.successEffect || "success"
