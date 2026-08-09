@@ -413,7 +413,9 @@
       "type": "stealthWait",
       "eyebrow": "ПОКЕДЕКС",
       "text": "Ожидание",
-      "next": "squirtle_access_sequence"
+      "next": "squirtle_access_sequence",
+      "revealDelayMs": 30000,
+      "buttonLabel": "ПРОВЕРИТЬ ПОПАДАНИЯ"
     },
     {
       "id": "squirtle_access_sequence",

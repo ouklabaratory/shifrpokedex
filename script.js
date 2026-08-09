@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 
 const STORAGE_KEYS = {
   config: "pokedex.config.override",
@@ -1254,16 +1254,22 @@ class QuestApp {
     el.codeLabel.hidden = true;
     el.secretCode.hidden = true;
     el.checkCode.hidden = true;
-    el.missionSecondaryAction.hidden = false;
-    el.missionSecondaryAction.disabled = false;
-    el.missionSecondaryAction.textContent = "";
-    el.missionSecondaryAction.setAttribute("aria-label", step.buttonLabel || "Продолжить");
-    el.missionSecondaryAction.classList.add("stealth-trigger");
+    el.checkCode.disabled = true;
+    el.missionSecondaryAction.hidden = true;
+    el.missionSecondaryAction.classList.remove("stealth-trigger");
     el.missionFeedback.textContent = "";
     el.missionFeedback.className = "mission-feedback";
     this.audio.pattern(step.sound || "scan");
     this.animations.transition(step.transition || "scan");
-    this.debug.update();
+    const revealDelay = Number(step.revealDelayMs) || 30000;
+    this.missionTimers.push(setTimeout(() => {
+      if (this.stateMachine.current !== "StealthWait") return;
+      el.checkCode.hidden = false;
+      el.checkCode.disabled = false;
+      el.checkCode.textContent = step.buttonLabel || "ПРОВЕРИТЬ ПОПАДАНИЯ";
+      this.audio.pattern("data");
+      this.animations.transition("scan");
+    }, revealDelay));    this.debug.update();
   }
 
   enterChallenge(step) {
