@@ -562,6 +562,7 @@ class StateMachine {
       audio: (step) => this.app.enterAudio(step),
       sequence: (step) => this.app.enterSequence(step),
       challenge: (step) => this.app.enterChallenge(step),
+      stealthWait: (step) => this.app.enterStealthWait(step),
       energyCheck: (step) => this.app.enterEnergyCheck(step),
       mission: (step) => this.app.enterMission(step),
       missionCode: (step) => this.app.enterMissionCode(step),
@@ -593,6 +594,7 @@ class StateMachine {
       audio: "AudioPlayback",
       sequence: "Sequence",
       challenge: "Challenge",
+      stealthWait: "StealthWait",
       energyCheck: "EnergyCheck",
       mission: "Mission",
       missionCode: "Mission",
@@ -1210,6 +1212,7 @@ class QuestApp {
     el.missionView?.classList?.add("briefing-compact");
     el.missionView?.classList?.remove("signal-mode");
     el.missionView?.classList?.remove("signal-compact");
+    el.missionView?.classList?.remove("rocket-alert-mode", "stealth-wait-mode");
     el.missionNumber.textContent = step.eyebrow || "ПОКЕДЕКС";
     el.teamRank.textContent = step.rank || "";
     el.codeLabel.hidden = true;
@@ -1220,6 +1223,8 @@ class QuestApp {
     el.missionFeedback.className = "mission-feedback";
     const screens = step.screens || [];
     for (const screen of screens) {
+      el.missionView?.classList?.remove("rocket-alert-mode", "stealth-wait-mode");
+      if (screen.viewClass) el.missionView?.classList?.add(screen.viewClass);
       el.missionTitle.textContent = screen.title || "";
       el.missionDescription.textContent = screen.text || "";
       if (screen.sound !== "none") this.audio.pattern(screen.sound || "success");
@@ -1228,7 +1233,37 @@ class QuestApp {
       await wait(screen.delayMs || step.screenDelayMs || 1800);
     }
     await wait(step.finalPauseMs || 900);
+    el.missionView?.classList?.remove("rocket-alert-mode", "stealth-wait-mode");
     this.stateMachine.next();
+  }
+
+  enterStealthWait(step) {
+    this.activeMission = null;
+    this.activeMissionData = null;
+    this.currentStealthWaitStep = step;
+    this.clearMissionTimers();
+    this.updateTeamHud();
+    this.showView("missionView");
+    el.missionFrame.hidden = true;
+    el.missionView?.classList?.remove("briefing-mode", "briefing-compact", "signal-mode", "signal-compact", "rocket-alert-mode");
+    el.missionView?.classList?.add("stealth-wait-mode");
+    el.missionNumber.textContent = step.eyebrow || "ПОКЕДЕКС";
+    el.teamRank.textContent = step.rank || "";
+    el.missionTitle.textContent = step.title || "";
+    el.missionDescription.innerHTML = `<span class="wait-word">${step.text || "Ожидание"}</span><span class="wait-dots" aria-hidden="true"><i></i><i></i><i></i></span>`;
+    el.codeLabel.hidden = true;
+    el.secretCode.hidden = true;
+    el.checkCode.hidden = true;
+    el.missionSecondaryAction.hidden = false;
+    el.missionSecondaryAction.disabled = false;
+    el.missionSecondaryAction.textContent = "";
+    el.missionSecondaryAction.setAttribute("aria-label", step.buttonLabel || "Продолжить");
+    el.missionSecondaryAction.classList.add("stealth-trigger");
+    el.missionFeedback.textContent = "";
+    el.missionFeedback.className = "mission-feedback";
+    this.audio.pattern(step.sound || "scan");
+    this.animations.transition(step.transition || "scan");
+    this.debug.update();
   }
 
   enterChallenge(step) {
@@ -1240,7 +1275,7 @@ class QuestApp {
     this.showView("missionView");
     el.missionFrame.hidden = true;
     el.missionView?.classList?.add("briefing-mode");
-    el.missionView?.classList?.remove("signal-mode");
+    el.missionView?.classList?.remove("signal-mode", "stealth-wait-mode", "rocket-alert-mode");
     el.missionNumber.textContent = step.eyebrow || "ИСПЫТАНИЕ";
     el.teamRank.textContent = "";
     el.missionTitle.textContent = step.title || "";
@@ -1268,7 +1303,7 @@ class QuestApp {
     this.showView("missionView");
     el.missionFrame.hidden = true;
     el.missionView?.classList?.add("briefing-mode");
-    el.missionView?.classList?.remove("signal-mode");
+    el.missionView?.classList?.remove("signal-mode", "stealth-wait-mode", "rocket-alert-mode");
     el.missionNumber.textContent = step.eyebrow || "ПРОВЕРКА";
     el.teamRank.textContent = "";
     el.missionTitle.textContent = step.title || "";
@@ -1352,6 +1387,7 @@ class QuestApp {
     el.missionView?.classList?.toggle("signal-mode", this.missionPhase === "signal");
     el.missionView?.classList?.toggle("briefing-compact", this.missionPhase !== "signal" && Boolean(this.activeMissionData.briefingCompact));
     el.missionView?.classList?.toggle("signal-compact", this.missionPhase === "signal" && Boolean(this.activeMissionData.signalCompact));
+    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode");
     el.missionNumber.textContent = `${this.config.quest.missionLabel} ${String(this.missions.indexOf(mission) + 1).padStart(2, "0")} / ${String(this.missions.length).padStart(2, "0")}`;
     el.missionTitle.textContent = this.missionPhase === "signal"
       ? (this.activeMissionData.signalTitle ?? this.activeMissionData.title)
@@ -1400,8 +1436,14 @@ class QuestApp {
       this.runEnergySequence();
       return;
     }
+    if (this.stateMachine.current === "StealthWait") {
+      el.missionSecondaryAction.classList.remove("stealth-trigger");
+      this.stateMachine.next();
+      return;
+    }
     if (this.missionPhase === "briefing") {
-      if (this.activeMissionData.preCodeScreens.length) this.startMissionPreCodeScreens();
+      if (this.activeMissionData.briefingNextStep) this.stateMachine.go(this.activeMissionData.briefingNextStep);
+      else if (this.activeMissionData.preCodeScreens.length) this.startMissionPreCodeScreens();
       else this.showMissionCardPrompt();
       return;
     }
@@ -1436,6 +1478,7 @@ class QuestApp {
     el.missionFrame.hidden = Boolean(this.activeMissionData.briefingText);
     el.missionView?.classList?.remove("signal-mode");
     el.missionView?.classList?.remove("signal-compact");
+    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode");
     el.missionView?.classList?.toggle("briefing-mode", Boolean(this.activeMissionData.briefingText));
     el.missionView?.classList?.toggle("briefing-compact", Boolean(this.activeMissionData.briefingCompact));
     el.missionTitle.textContent = this.activeMissionData.briefingTitle ?? this.activeMissionData.title;
@@ -1495,6 +1538,7 @@ class QuestApp {
     if (screen.image) this.renderMedia("mission", { type: typeFromSource(screen.image), src: screen.image, alt: screen.title || this.activeMissionData.title });
     el.missionView?.classList?.remove("signal-mode");
     el.missionView?.classList?.remove("signal-compact");
+    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode");
     el.missionView?.classList?.toggle("briefing-mode", Boolean(screen.text));
     el.missionView?.classList?.toggle("briefing-compact", Boolean(screen.compact));
     el.missionTitle.textContent = screen.title || "";
@@ -1550,6 +1594,7 @@ class QuestApp {
     el.missionView?.classList?.remove("briefing-compact");
     el.missionView?.classList?.remove("signal-mode");
     el.missionView?.classList?.remove("signal-compact");
+    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode");
     el.missionDescription.textContent = this.activeMissionData.codePromptText;
     el.codeLabel.hidden = true;
     el.secretCode.hidden = true;
@@ -1575,6 +1620,7 @@ class QuestApp {
     el.missionView?.classList?.remove("briefing-compact");
     el.missionView?.classList?.remove("signal-mode");
     el.missionView?.classList?.remove("signal-compact");
+    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode");
     el.missionDescription.textContent = this.activeMissionData.codeEntryText || this.codeEntryText();
     el.codeLabel.hidden = false;
     el.secretCode.hidden = false;
@@ -1608,6 +1654,11 @@ class QuestApp {
   }
 
   handleMissionSecondaryAction() {
+    if (this.stateMachine.current === "StealthWait") {
+      el.missionSecondaryAction.classList.remove("stealth-trigger");
+      this.stateMachine.next();
+      return;
+    }
     if (this.stateMachine.current !== "EnergyCheck") return;
     this.animations.flash("red");
     this.audio.pattern("failed");
@@ -1751,6 +1802,8 @@ class QuestApp {
 
   showView(id) {
     this.animations.transition("refresh");
+    el.missionSecondaryAction?.classList?.remove("stealth-trigger");
+    el.missionSecondaryAction?.removeAttribute("aria-label");
     el.views.forEach((view) => view.classList.toggle("active", view.id === id));
   }
 
@@ -1833,6 +1886,7 @@ function missionRuntimeData(mission = {}) {
     codeEntryText: mission.codeEntryText || "",
     preCodeScreens: Array.isArray(mission.preCodeScreens) ? mission.preCodeScreens : [],
     preCodeNextStep: mission.preCodeNextStep || "",
+    briefingNextStep: mission.briefingNextStep || "",
     postSuccessText: mission.postSuccessText,
     successText: successScreen.text || mission.successText || card.description || "",
     successEffect: successScreen.effect || card.successEffect || "success"

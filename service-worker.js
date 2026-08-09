@@ -1,4 +1,4 @@
-const CACHE_NAME = "pokedex-secret-link-v51";
+const CACHE_NAME = "pokedex-secret-link-v52";
 
 const CORE_ASSETS = [
   "./",
@@ -6,10 +6,10 @@ const CORE_ASSETS = [
   "./admin.html",
   "./admin.css",
   "./admin.js",
-  "./admin.js?v=charmander-fire1",
+  "./admin.js?v=rocket-squirtle1",
   "./style.css",
   "./script.js",
-  "./script.js?v=charmander-fire1",
+  "./script.js?v=rocket-squirtle1",
   "./config.json",
   "./missions.json",
   "./flow.json",
@@ -28,6 +28,9 @@ const CORE_ASSETS = [
   "./timelines/oak_after_bulbasaur.json",
   "./timelines/oak_charmander_route.json",
   "./timelines/oak_after_charmander.json",
+  "./timelines/oak_team_rocket.json",
+  "./timelines/oak_squirtle_rescue.json",
+  "./timelines/oak_after_squirtle.json",
   "./images/icon.svg",
   "./images/icon-maskable.svg",
   "./images/logo.svg",

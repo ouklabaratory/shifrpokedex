@@ -307,12 +307,164 @@
           "delayMs": 2000
         }
       ],
+      "next": "mission_5_alert"
+    },
+    {
+      "id": "mission_5_alert",
+      "type": "sequence",
+      "eyebrow": "ПОКЕДЕКС",
+      "screenDelayMs": 1700,
+      "finalPauseMs": 300,
+      "screens": [
+        {
+          "title": "ТРЕВОГА",
+          "text": "НЕСАНКЦИОНИРОВАННОЕ\nПРОНИКНОВЕНИЕ\n\n...",
+          "sound": "failed",
+          "transition": "scan",
+          "flash": "red",
+          "delayMs": 1800
+        },
+        {
+          "title": "ТРЕВОГА",
+          "text": "Связь с лабораторией\nпрервана...\n\n...",
+          "sound": "failed",
+          "transition": "scan",
+          "flash": "red",
+          "delayMs": 1800
+        },
+        {
+          "title": "ТРЕВОГА",
+          "text": "Получено\nэкстренное сообщение.",
+          "sound": "incoming",
+          "transition": "scan",
+          "flash": "red",
+          "delayMs": 1500
+        }
+      ],
+      "next": "oak_team_rocket_incoming"
+    },
+    {
+      "id": "oak_team_rocket_incoming",
+      "type": "incoming",
+      "next": "oak_team_rocket"
+    },
+    {
+      "id": "oak_team_rocket",
+      "type": "audio",
+      "audio": "audio/oak07.mp3",
+      "timeline": "timelines/oak_team_rocket.json",
+      "next": "rocket_signal_sequence"
+    },
+    {
+      "id": "rocket_signal_sequence",
+      "type": "sequence",
+      "eyebrow": "МИССИЯ №5",
+      "screenDelayMs": 1800,
+      "finalPauseMs": 400,
+      "screens": [
+        {
+          "title": "R",
+          "text": "",
+          "viewClass": "rocket-alert-mode",
+          "sound": "failed",
+          "transition": "scan",
+          "flash": "red",
+          "delayMs": 2200
+        },
+        {
+          "title": "НЕИЗВЕСТНЫЙ СИГНАЛ",
+          "text": "Источник установлен.\n\nКОМАНДА R",
+          "sound": "data",
+          "transition": "scan",
+          "flash": "red",
+          "delayMs": 2200
+        },
+        {
+          "title": "СКВИРТЛ",
+          "text": "Последний сигнал Сквиртла\nобнаружен.\n\nВероятность захвата:\n\n98%",
+          "sound": "failed",
+          "transition": "scan",
+          "flash": "red",
+          "delayMs": 2600
+        }
+      ],
       "next": "mission_5"
     },
     {
       "id": "mission_5",
       "type": "mission",
       "missionId": 5,
+      "next": "mission_6"
+    },
+    {
+      "id": "oak_squirtle_rescue_incoming",
+      "type": "incoming",
+      "next": "oak_squirtle_rescue"
+    },
+    {
+      "id": "oak_squirtle_rescue",
+      "type": "audio",
+      "audio": "audio/oak08.mp3",
+      "timeline": "timelines/oak_squirtle_rescue.json",
+      "next": "squirtle_battle_wait"
+    },
+    {
+      "id": "squirtle_battle_wait",
+      "type": "stealthWait",
+      "eyebrow": "ПОКЕДЕКС",
+      "text": "Ожидание",
+      "next": "squirtle_access_sequence"
+    },
+    {
+      "id": "squirtle_access_sequence",
+      "type": "sequence",
+      "eyebrow": "ПОКЕДЕКС",
+      "screenDelayMs": 900,
+      "finalPauseMs": 600,
+      "screens": [
+        {
+          "title": "ПОПАДАНИЯ ЗАРЕГИСТРИРОВАНЫ",
+          "text": "██████████\n\n100%",
+          "sound": "success",
+          "transition": "scan",
+          "flash": "green",
+          "delayMs": 1300
+        },
+        {
+          "title": "ЗАЩИТНАЯ СИСТЕМА",
+          "text": "отключена.",
+          "sound": "success",
+          "transition": "scan",
+          "delayMs": 1200
+        },
+        {
+          "title": "ДОСТУП РАЗРЕШЁН",
+          "text": "",
+          "sound": "success",
+          "transition": "scan",
+          "flash": "green",
+          "delayMs": 1600
+        }
+      ],
+      "next": "mission_5_code"
+    },
+    {
+      "id": "mission_5_code",
+      "type": "missionCode",
+      "missionId": 5,
+      "next": "oak_after_squirtle_incoming",
+      "directCode": true
+    },
+    {
+      "id": "oak_after_squirtle_incoming",
+      "type": "incoming",
+      "next": "oak_after_squirtle"
+    },
+    {
+      "id": "oak_after_squirtle",
+      "type": "audio",
+      "audio": "audio/oak09.mp3",
+      "timeline": "timelines/oak_after_squirtle.json",
       "next": "mission_6"
     },
     {

@@ -1102,6 +1102,96 @@ dd {
   white-space: pre-line;
 }
 
+#missionView.rocket-alert-mode {
+  place-content: center;
+  text-align: center;
+  animation: alertNoise 740ms steps(2, end) infinite;
+}
+
+#missionView.rocket-alert-mode #missionTitle {
+  margin: 0;
+  color: #ff3d4f;
+  font-size: 7rem;
+  line-height: 0.86;
+  letter-spacing: 0;
+  text-shadow:
+    0 0 12px rgba(255, 60, 79, 0.9),
+    0 0 34px rgba(255, 8, 42, 0.68);
+}
+
+#missionView.rocket-alert-mode #missionDescription {
+  color: #ffd9dd;
+  font-size: 0.86rem;
+  font-weight: 900;
+  text-shadow: 0 0 12px rgba(255, 60, 79, 0.7);
+}
+
+#missionView.stealth-wait-mode {
+  position: relative;
+  place-content: center;
+  text-align: center;
+}
+
+#missionView.stealth-wait-mode #missionTitle {
+  display: none;
+}
+
+#missionView.stealth-wait-mode #missionDescription {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #dfffea;
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-shadow: 0 0 12px rgba(81, 255, 137, 0.62);
+}
+
+.wait-dots {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.wait-dots i {
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(81, 255, 137, 0.85);
+  background: rgba(81, 255, 137, 0.1);
+  box-shadow: 0 0 10px rgba(81, 255, 137, 0.35);
+  animation: waitDot 1.15s linear infinite;
+}
+
+.wait-dots i:nth-child(2) {
+  animation-delay: 160ms;
+}
+
+.wait-dots i:nth-child(3) {
+  animation-delay: 320ms;
+}
+
+.action.stealth-trigger {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 24px;
+  height: 24px;
+  min-height: 24px;
+  padding: 0;
+  border: 1px solid rgba(81, 255, 137, 0.18);
+  background: rgba(81, 255, 137, 0.04);
+  color: transparent;
+  box-shadow: none;
+  opacity: 0.32;
+}
+
+.action.stealth-trigger::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: rgba(81, 255, 137, 0.28);
+}
+
 .code-label {
   margin-top: 6px;
   color: var(--muted);
@@ -1542,6 +1632,25 @@ dd {
 
 @keyframes dotLoad {
   50% { transform: translateY(-7px); opacity: 0.55; }
+}
+
+@keyframes waitDot {
+  0%, 100% {
+    opacity: 0.25;
+    background: rgba(81, 255, 137, 0.08);
+    box-shadow: 0 0 6px rgba(81, 255, 137, 0.22);
+  }
+  45%, 65% {
+    opacity: 1;
+    background: rgba(81, 255, 137, 0.95);
+    box-shadow: 0 0 16px rgba(81, 255, 137, 0.9);
+  }
+}
+
+@keyframes alertNoise {
+  0%, 100% { filter: none; }
+  33% { filter: hue-rotate(-8deg) contrast(1.2); }
+  66% { filter: saturate(1.45) brightness(1.08); }
 }
 
 @keyframes redFlash {
