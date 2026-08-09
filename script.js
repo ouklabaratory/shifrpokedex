@@ -1596,7 +1596,7 @@ class QuestApp {
 
   showMissionCardPrompt() {
     this.missionPhase = "card";
-    el.missionFrame.hidden = false;
+    el.missionFrame.hidden = !this.activeMissionData.image;
     el.missionView?.classList?.remove("briefing-mode");
     el.missionView?.classList?.remove("briefing-compact");
     el.missionView?.classList?.remove("signal-mode");
@@ -1622,7 +1622,7 @@ class QuestApp {
 
   beginMissionCodeEntry() {
     this.missionPhase = "code";
-    el.missionFrame.hidden = false;
+    el.missionFrame.hidden = !this.activeMissionData.image;
     el.missionView?.classList?.remove("briefing-mode");
     el.missionView?.classList?.remove("briefing-compact");
     el.missionView?.classList?.remove("signal-mode");

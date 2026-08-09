@@ -2,10 +2,17 @@
   "mainCipher": {
     "locked": true,
     "length": 6,
-    "answer": "975384",
-    "rule": "Первые цифры кодов миссий в обратном порядке: 9 7 5 3 8 4.",
+    "answer": "482579",
+    "rule": "Главный код лаборатории: 482579.",
     "visibleFragments": [],
-    "hiddenFragments": [1, 2, 3, 4, 5, 6],
+    "hiddenFragments": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
     "emptySymbol": "□",
     "collectedSymbol": "■",
     "missionCodes": [
@@ -48,7 +55,7 @@
       {
         "missionId": 7,
         "pokemon": "Главный компьютер",
-        "code": "975384",
+        "code": "482579",
         "fragmentIndex": "FINAL"
       }
     ]

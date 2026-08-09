@@ -337,7 +337,7 @@
       "pokemon": "Главный компьютер",
       "audio_before": "audio/data.wav",
       "audio_after": "audio/mission_success.wav",
-      "image": "images/victory.svg",
+      "image": "",
       "background": "",
       "icon": "",
       "missionType": "finalCipher",
@@ -355,7 +355,7 @@
       "nextMission": null,
       "pokemonCard": {
         "name": "Главный компьютер",
-        "image": "images/victory.svg",
+        "image": "",
         "code": "482579",
         "description": "",
         "voice": "audio/mission_success.wav",
@@ -371,7 +371,9 @@
       "backgroundMusic": "",
       "enabled": true,
       "countsAsRescue": false,
-      "postSuccessText": ""
+      "postSuccessText": "",
+      "codeEntryText": "Введите главный код лаборатории.\n\n□ □ □ □ □ □",
+      "enterCodeButtonLabel": "ВВЕСТИ ГЛАВНЫЙ КОД"
     }
   ]
 }
