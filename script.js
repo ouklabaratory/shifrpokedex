@@ -1314,6 +1314,8 @@ class QuestApp {
     el.missionFrame.hidden = this.missionPhase === "signal" ? !this.activeMissionData.showSignalImage : Boolean(this.activeMissionData.briefingText);
     el.missionView?.classList?.toggle("briefing-mode", this.missionPhase !== "signal" && Boolean(this.activeMissionData.briefingText));
     el.missionView?.classList?.toggle("signal-mode", this.missionPhase === "signal");
+    el.missionView?.classList?.toggle("briefing-compact", this.missionPhase !== "signal" && Boolean(this.activeMissionData.briefingCompact));
+    el.missionView?.classList?.toggle("signal-compact", this.missionPhase === "signal" && Boolean(this.activeMissionData.signalCompact));
     el.missionNumber.textContent = `${this.config.quest.missionLabel} ${String(this.missions.indexOf(mission) + 1).padStart(2, "0")} / ${String(this.missions.length).padStart(2, "0")}`;
     el.missionTitle.textContent = this.missionPhase === "signal"
       ? (this.activeMissionData.signalTitle ?? this.activeMissionData.title)
@@ -1385,7 +1387,9 @@ class QuestApp {
     this.clearMissionTimers();
     el.missionFrame.hidden = Boolean(this.activeMissionData.briefingText);
     el.missionView?.classList?.remove("signal-mode");
+    el.missionView?.classList?.remove("signal-compact");
     el.missionView?.classList?.toggle("briefing-mode", Boolean(this.activeMissionData.briefingText));
+    el.missionView?.classList?.toggle("briefing-compact", Boolean(this.activeMissionData.briefingCompact));
     el.missionTitle.textContent = this.activeMissionData.briefingTitle ?? this.activeMissionData.title;
     el.missionDescription.textContent = this.activeMissionData.briefingText || this.activeMissionData.description;
     el.checkCode.hidden = false;
@@ -1426,7 +1430,9 @@ class QuestApp {
     this.missionPhase = "card";
     el.missionFrame.hidden = false;
     el.missionView?.classList?.remove("briefing-mode");
+    el.missionView?.classList?.remove("briefing-compact");
     el.missionView?.classList?.remove("signal-mode");
+    el.missionView?.classList?.remove("signal-compact");
     el.missionDescription.textContent = this.activeMissionData.codePromptText;
     el.codeLabel.hidden = true;
     el.secretCode.hidden = true;
@@ -1447,7 +1453,9 @@ class QuestApp {
     this.missionPhase = "code";
     el.missionFrame.hidden = false;
     el.missionView?.classList?.remove("briefing-mode");
+    el.missionView?.classList?.remove("briefing-compact");
     el.missionView?.classList?.remove("signal-mode");
+    el.missionView?.classList?.remove("signal-compact");
     el.missionDescription.textContent = this.activeMissionData.codeEntryText || this.codeEntryText();
     el.codeLabel.hidden = false;
     el.secretCode.hidden = false;
@@ -1693,6 +1701,8 @@ function missionRuntimeData(mission = {}) {
     signalTitle: mission.signalTitle,
     briefingTitle: mission.briefingTitle,
     signalShowProgress: mission.signalShowProgress !== false,
+    signalCompact: Boolean(mission.signalCompact),
+    briefingCompact: Boolean(mission.briefingCompact),
     showSignalImage: Boolean(mission.showSignalImage),
     actionButtonLabel: mission.actionButtonLabel || "",
     codePromptText: mission.codePromptText || "",

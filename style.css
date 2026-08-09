@@ -1006,6 +1006,32 @@ dd {
   font-size: 0.76rem;
 }
 
+#missionView.briefing-compact {
+  gap: 6px;
+  overflow: hidden;
+  padding-bottom: 8px;
+}
+
+#missionView.briefing-compact .mission-top {
+  font-size: 0.66rem;
+}
+
+#missionView.briefing-compact #missionTitle {
+  display: none;
+}
+
+#missionView.briefing-compact #missionDescription {
+  padding: 8px;
+  font-size: 0.67rem;
+  line-height: 1.22;
+}
+
+#missionView.briefing-compact .action {
+  min-height: 45px;
+  padding: 9px 10px;
+  font-size: 0.84rem;
+}
+
 #missionView.signal-mode {
   align-content: center;
 }
@@ -1023,6 +1049,27 @@ dd {
   font-size: 0.88rem;
   font-weight: 700;
   text-shadow: 0 0 10px rgba(81, 255, 137, 0.52);
+}
+
+#missionView.signal-compact {
+  gap: 6px;
+  overflow: hidden;
+  padding-bottom: 8px;
+}
+
+#missionView.signal-compact .mission-top {
+  font-size: 0.66rem;
+}
+
+#missionView.signal-compact .mission-image-wrap {
+  min-height: 0;
+  aspect-ratio: 1.55;
+}
+
+#missionView.signal-compact #missionDescription {
+  padding: 10px 8px;
+  font-size: 0.72rem;
+  line-height: 1.24;
 }
 
 .mission-top {
