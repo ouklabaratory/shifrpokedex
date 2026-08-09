@@ -1,4 +1,4 @@
-const CACHE_NAME = "pokedex-secret-link-v54";
+const CACHE_NAME = "pokedex-secret-link-v55";
 
 const CORE_ASSETS = [
   "./",
@@ -6,10 +6,10 @@ const CORE_ASSETS = [
   "./admin.html",
   "./admin.css",
   "./admin.js",
-  "./admin.js?v=squirtle-hit-check1",
+  "./admin.js?v=squirtle-hit-check2",
   "./style.css",
   "./script.js",
-  "./script.js?v=squirtle-hit-check1",
+  "./script.js?v=squirtle-hit-check2",
   "./config.json",
   "./missions.json",
   "./flow.json",

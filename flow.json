@@ -421,8 +421,8 @@
       "id": "squirtle_access_sequence",
       "type": "sequence",
       "eyebrow": "ПОКЕДЕКС",
-      "screenDelayMs": 900,
-      "finalPauseMs": 900,
+      "screenDelayMs": 1200,
+      "finalPauseMs": 1200,
       "screens": [
         {
           "title": "ПОПАДАНИЯ ЗАРЕГИСТРИРОВАНЫ",
@@ -430,50 +430,58 @@
           "sound": "success",
           "transition": "scan",
           "flash": "green",
-          "delayMs": 1200
+          "delayMs": 1800
         },
         {
-          "title": "АНАЛИЗ СИСТЕМЫ",
-          "text": "██░░░░░░░░\n\n20%",
+          "title": "ПРОВЕРКА ПОПАДАНИЙ",
+          "text": "░░░░░░░░░░\n\n0%",
           "sound": "data",
           "transition": "scan",
-          "delayMs": 700
+          "delayMs": 900
         },
         {
-          "title": "АНАЛИЗ СИСТЕМЫ",
+          "title": "ПРОВЕРКА ПОПАДАНИЙ",
+          "text": "██░░░░░░░░\n\n20%",
+          "sound": "data",
+          "transition": "none",
+          "delayMs": 1000
+        },
+        {
+          "title": "ПРОВЕРКА ПОПАДАНИЙ",
           "text": "████░░░░░░\n\n40%",
           "sound": "data",
           "transition": "none",
-          "delayMs": 700
+          "delayMs": 1000
         },
         {
-          "title": "АНАЛИЗ СИСТЕМЫ",
+          "title": "ПРОВЕРКА ПОПАДАНИЙ",
           "text": "██████░░░░\n\n60%",
           "sound": "data",
           "transition": "none",
-          "delayMs": 700
+          "delayMs": 1000
         },
         {
-          "title": "АНАЛИЗ СИСТЕМЫ",
+          "title": "ПРОВЕРКА ПОПАДАНИЙ",
           "text": "████████░░\n\n80%",
           "sound": "data",
           "transition": "none",
-          "delayMs": 700
+          "delayMs": 1000
         },
         {
-          "title": "АНАЛИЗ СИСТЕМЫ",
+          "title": "ПРОВЕРКА ПОПАДАНИЙ",
           "text": "██████████\n\n100%",
           "sound": "success",
           "transition": "scan",
           "flash": "green",
-          "delayMs": 950
+          "delayMs": 1400
         },
         {
-          "title": "ЗАЩИТНАЯ СИСТЕМА",
-          "text": "отключена.",
+          "title": "ЗАЩИТНАЯ СИСТЕМА ОТКЛЮЧЕНА",
+          "text": "",
           "sound": "success",
           "transition": "scan",
-          "delayMs": 1300
+          "flash": "green",
+          "delayMs": 2000
         },
         {
           "title": "ДОСТУП РАЗРЕШЁН",
@@ -482,7 +490,7 @@
           "transition": "scan",
           "flash": "green",
           "viewClass": "access-granted-mode",
-          "delayMs": 1800
+          "delayMs": 3200
         }
       ],
       "next": "mission_5_code"
