@@ -1,4 +1,4 @@
-const CACHE_NAME = "pokedex-secret-link-v42";
+const CACHE_NAME = "pokedex-secret-link-v43";
 
 const CORE_ASSETS = [
   "./",
@@ -6,10 +6,10 @@ const CORE_ASSETS = [
   "./admin.html",
   "./admin.css",
   "./admin.js",
-  "./admin.js?v=eevee-mission02-1",
+  "./admin.js?v=eevee-trust-check1",
   "./style.css",
   "./script.js",
-  "./script.js?v=eevee-mission02-1",
+  "./script.js?v=eevee-trust-check1",
   "./config.json",
   "./missions.json",
   "./flow.json",
@@ -43,10 +43,10 @@ const CORE_ASSETS = [
   "./images/mission01.svg",
   "./images/mission02.svg",
   "./images/mission03.svg",
-  "./images/mission04.svg",
   "./images/mission05.svg",
   "./images/mission06.svg",
   "./images/mission02-eevee.svg",
+  "./images/mission03-bulbasaur.svg",
   "./images/mission08.svg",
   "./audio/power.wav",
   "./audio/boot.wav",

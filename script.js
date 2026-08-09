@@ -1258,16 +1258,27 @@ class QuestApp {
     el.missionSecondaryAction.disabled = true;
     el.checkCode.hidden = true;
     el.missionSecondaryAction.hidden = true;
-    el.missionTitle.textContent = step.transferTitle || "ПЕРЕДАЧА ЭНЕРГИИ";
-    const values = step.progressValues || [10, 31, 57, 84, 100];
-    for (const value of values) {
-      el.missionDescription.textContent = `${step.transferTitle || "ПЕРЕДАЧА ЭНЕРГИИ"}\n\n${this.progressBarText(value)}\n${value}%`;
+    const analysisSteps = step.analysisSteps || (step.progressValues || [10, 31, 57, 84, 100]).map((value) => ({
+      text: step.transferTitle || "ПЕРЕДАЧА ЭНЕРГИИ",
+      value,
+      delayMs: step.progressDelayMs || 650
+    }));
+    el.missionTitle.textContent = step.transferTitle || step.analysisTitle || "ПРОВЕРКА";
+    for (const item of analysisSteps) {
+      const value = Number(item.value) || 0;
+      el.missionDescription.textContent = `${item.text || step.transferTitle || "ПРОВЕРКА"}\n\n${this.progressBarText(value)}\n${value}%`;
       this.audio.pattern("data");
-      await wait(step.progressDelayMs || 650);
+      await wait(item.delayMs || step.progressDelayMs || 650);
     }
-    this.animations.flash("yellow");
+    this.animations.flash(step.flashColor || "yellow");
     this.audio.pattern("scan");
     await wait(step.flashDelayMs || 900);
+    for (const text of step.finalChecks || []) {
+      el.missionTitle.textContent = "";
+      el.missionDescription.textContent = text;
+      this.audio.pattern("success");
+      await wait(step.finalCheckDelayMs || 900);
+    }
     const screens = step.screens || [
       "⚡ ПИКАЧУ СПАСЁН\nЭнергия восстановлена.",
       "Спасено покемонов\n\n1 / 6",
@@ -1300,8 +1311,8 @@ class QuestApp {
     this.missionPhase = this.activeMissionData.signalText ? "signal" : this.activeMissionData.briefingText ? "briefing" : "card";
     this.updateTeamHud();
     this.showView("missionView");
-    el.missionFrame.hidden = Boolean(this.activeMissionData.briefingText);
-    el.missionView?.classList?.toggle("briefing-mode", Boolean(this.activeMissionData.briefingText));
+    el.missionFrame.hidden = this.missionPhase === "signal" ? !this.activeMissionData.showSignalImage : Boolean(this.activeMissionData.briefingText);
+    el.missionView?.classList?.toggle("briefing-mode", this.missionPhase !== "signal" && Boolean(this.activeMissionData.briefingText));
     el.missionView?.classList?.toggle("signal-mode", this.missionPhase === "signal");
     el.missionNumber.textContent = `${this.config.quest.missionLabel} ${String(this.missions.indexOf(mission) + 1).padStart(2, "0")} / ${String(this.missions.length).padStart(2, "0")}`;
     el.missionTitle.textContent = this.activeMissionData.title;
@@ -1670,6 +1681,7 @@ function missionRuntimeData(mission = {}) {
     signalDelayMs: mission.signalDelayMs || 0,
     signalProgressDurationMs: mission.signalProgressDurationMs || 0,
     signalHoldMs: mission.signalHoldMs || 0,
+    showSignalImage: Boolean(mission.showSignalImage),
     actionButtonLabel: mission.actionButtonLabel || "",
     codePromptText: mission.codePromptText || "",
     enterCodeButtonLabel: mission.enterCodeButtonLabel || "",

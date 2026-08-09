@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Силуэт Бульбазавра">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="52%" r="58%">
+      <stop offset="0" stop-color="#55ff8e" stop-opacity=".25"/>
+      <stop offset=".55" stop-color="#0b3a22" stop-opacity=".36"/>
+      <stop offset="1" stop-color="#06120a"/>
+    </radialGradient>
+    <filter id="blurGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="#06120a"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+  <g opacity=".16" stroke="#55ff8e" stroke-width="1">
+    <path d="M0 80h800M0 140h800M0 200h800M0 260h800M0 320h800M0 380h800M0 440h800M0 500h800"/>
+    <path d="M90 0v600M180 0v600M270 0v600M360 0v600M450 0v600M540 0v600M630 0v600M720 0v600"/>
+  </g>
+  <g filter="url(#blurGlow)" fill="#06120a" stroke="#b9ffd0" stroke-width="8" stroke-linejoin="round">
+    <path d="M338 182c-14-74 22-116 62-128 40 12 76 54 62 128 48 18 80 64 80 122 0 102-64 178-142 178s-142-76-142-178c0-58 32-104 80-122z"/>
+    <path d="M286 330c-88 10-144 56-156 126 70 18 130 4 180-42"/>
+    <path d="M514 330c88 10 144 56 156 126-70 18-130 4-180-42"/>
+    <ellipse cx="400" cy="386" rx="178" ry="112"/>
+    <path d="M244 460c-28 24-48 50-60 78 50 8 94-5 132-38"/>
+    <path d="M556 460c28 24 48 50 60 78-50 8-94-5-132-38"/>
+  </g>
+  <g fill="#b9ffd0">
+    <circle cx="346" cy="386" r="12"/>
+    <circle cx="454" cy="386" r="12"/>
+  </g>
+  <path d="M366 428c22 15 46 15 68 0" fill="none" stroke="#b9ffd0" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="400" cy="336" r="218" fill="none" stroke="#55ff8e" stroke-width="3" opacity=".35"/>
+  <path d="M108 112h126M566 112h126M108 488h126M566 488h126" stroke="#55ff8e" stroke-width="5" opacity=".35"/>
+</svg>

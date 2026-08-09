@@ -98,7 +98,7 @@
       "pokemon": "Бульбазавр",
       "audio_before": "audio/mission04.wav",
       "audio_after": "audio/mission_success.wav",
-      "image": "images/mission04.svg",
+      "image": "images/mission03-bulbasaur.svg",
       "background": "",
       "icon": "",
       "missionType": "team",
@@ -116,7 +116,7 @@
       "nextMission": 4,
       "pokemonCard": {
         "name": "Бульбазавр",
-        "image": "images/mission04.svg",
+        "image": "images/mission03-bulbasaur.svg",
         "code": "3168",
         "description": "✔ Код подтверждён. ✔ Бульбазавр найден. Цветок Дружбы собран. Получен третий фрагмент главного шифра.",
         "voice": "audio/mission_success.wav",
@@ -131,7 +131,11 @@
       "successAudio": "audio/mission_success.wav",
       "backgroundMusic": "",
       "enabled": true,
-      "countsAsRescue": true
+      "countsAsRescue": true,
+      "signalText": "Обнаружен новый сигнал...\n\nИсточник сильно повреждён...\n\nПопытка восстановления данных...",
+      "signalProgressDurationMs": 3400,
+      "signalHoldMs": 1200,
+      "showSignalImage": true
     },
     {
       "id": 4,
