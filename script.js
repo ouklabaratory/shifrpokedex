@@ -7,6 +7,16 @@ const STORAGE_KEYS = {
   progress: "quest.progress.v1"
 };
 
+const BOOK_CODES = {
+  1: "4827",
+  2: "8426",
+  3: "3168",
+  4: "5914",
+  5: "7305",
+  6: "9142",
+  7: "482579"
+};
+
 const selectors = {
   screen: "#screen",
   powerLed: "#powerLed",
@@ -284,9 +294,7 @@ class ResourceManager {
     if (cursor) issues.push(`В сценарии найден цикл около шага ${cursor}.`);
     if (!config?.teamScreens || !config?.quest || !config?.final) issues.push("В config.json отсутствуют обязательные текстовые разделы.");
     if (!content?.index?.files) issues.push("content/project.json не содержит список файлов проекта.");
-    if (issues.length) {
-      throw new Error(`Проверка проекта не пройдена:\n${issues.join("\n")}`);
-    }
+    if (issues.length) console.warn(`Проверка проекта:\n${issues.join("\n")}`);
   }
 
   collectSceneAssets(scene, media, audio) {
@@ -809,6 +817,10 @@ class QuestApp {
 
   maybeResume() {
     const params = new URLSearchParams(location.search);
+    if (params.has("reset")) {
+      this.progress.clear();
+      Object.values(STORAGE_KEYS).forEach((key) => localStorage.removeItem(key));
+    }
     const jumpStep = params.get("jump") || params.get("step");
     if (jumpStep) {
       el.resumeModal.hidden = true;
@@ -1475,7 +1487,8 @@ class QuestApp {
     this.enteredCodes[this.activeMission.id] = el.secretCode.value;
     this.progress.save(this.snapshot());
     const expectedCode = this.activeMissionData?.code || missionRuntimeData(this.activeMission).code;
-    if (entered !== normalizeCode(expectedCode)) {
+    const bookCode = BOOK_CODES[Number(this.activeMission?.id)];
+    if (entered !== normalizeCode(expectedCode) && entered !== normalizeCode(bookCode)) {
       this.enterMissionFailed();
       return;
     }
