@@ -147,6 +147,44 @@
       "id": "mission_3",
       "type": "mission",
       "missionId": 3,
+      "next": "bulbasaur_complete_sequence"
+    },
+    {
+      "id": "bulbasaur_complete_sequence",
+      "type": "sequence",
+      "eyebrow": "МИССИЯ 03 / 07",
+      "rank": "Третий фрагмент",
+      "screens": [
+        {
+          "title": "МИССИЯ ВЫПОЛНЕНА",
+          "text": "🌿 БУЛЬБАЗАВР НАЙДЕН\nЦветок Дружбы собран.",
+          "flash": "green",
+          "delayMs": 1700
+        },
+        {
+          "title": "СПАСЕНО ПОКЕМОНОВ",
+          "text": "3 / 6",
+          "delayMs": 1500
+        },
+        {
+          "title": "ФРАГМЕНТ СОХРАНЁН",
+          "text": "Получен третий\nфрагмент главного шифра.\n\n■ ■ ■ □ □ □",
+          "delayMs": 2100
+        }
+      ],
+      "finalPauseMs": 1000,
+      "next": "oak_after_bulbasaur_incoming"
+    },
+    {
+      "id": "oak_after_bulbasaur_incoming",
+      "type": "incoming",
+      "next": "oak_after_bulbasaur"
+    },
+    {
+      "id": "oak_after_bulbasaur",
+      "type": "audio",
+      "audio": "audio/oak04.mp3",
+      "timeline": "timelines/oak_after_bulbasaur.json",
       "next": "mission_4"
     },
     {

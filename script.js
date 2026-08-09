@@ -560,6 +560,7 @@ class StateMachine {
       teamRegistered: (step) => this.app.enterTeamRegistered(step),
       incoming: (step) => this.app.enterIncoming(step),
       audio: (step) => this.app.enterAudio(step),
+      sequence: (step) => this.app.enterSequence(step),
       challenge: (step) => this.app.enterChallenge(step),
       energyCheck: (step) => this.app.enterEnergyCheck(step),
       mission: (step) => this.app.enterMission(step),
@@ -589,6 +590,7 @@ class StateMachine {
       teamRegistered: "TeamRegistered",
       incoming: "IncomingTransmission",
       audio: "AudioPlayback",
+      sequence: "Sequence",
       challenge: "Challenge",
       energyCheck: "EnergyCheck",
       mission: "Mission",
@@ -1193,6 +1195,38 @@ class QuestApp {
   clearTimeline() {
     this.timelineTimers.forEach((timer) => clearTimeout(timer));
     this.timelineTimers = [];
+  }
+
+  async enterSequence(step) {
+    this.activeMission = null;
+    this.activeMissionData = null;
+    this.clearMissionTimers();
+    this.updateTeamHud();
+    this.showView("missionView");
+    el.missionFrame.hidden = true;
+    el.missionView?.classList?.add("briefing-mode");
+    el.missionView?.classList?.add("briefing-compact");
+    el.missionView?.classList?.remove("signal-mode");
+    el.missionView?.classList?.remove("signal-compact");
+    el.missionNumber.textContent = step.eyebrow || "ПОКЕДЕКС";
+    el.teamRank.textContent = step.rank || "";
+    el.codeLabel.hidden = true;
+    el.secretCode.hidden = true;
+    el.checkCode.hidden = true;
+    el.missionSecondaryAction.hidden = true;
+    el.missionFeedback.textContent = "";
+    el.missionFeedback.className = "mission-feedback";
+    const screens = step.screens || [];
+    for (const screen of screens) {
+      el.missionTitle.textContent = screen.title || "";
+      el.missionDescription.textContent = screen.text || "";
+      this.audio.pattern(screen.sound || "success");
+      this.animations.transition(screen.transition || "scan");
+      if (screen.flash) this.animations.flash(screen.flash);
+      await wait(screen.delayMs || step.screenDelayMs || 1800);
+    }
+    await wait(step.finalPauseMs || 900);
+    this.stateMachine.next();
   }
 
   enterChallenge(step) {

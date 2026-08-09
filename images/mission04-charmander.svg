@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Силуэт Чармандера">
+  <defs>
+    <radialGradient id="fireGlow" cx="50%" cy="50%" r="58%">
+      <stop offset="0" stop-color="#ff8a35" stop-opacity=".28"/>
+      <stop offset=".55" stop-color="#4b1608" stop-opacity=".4"/>
+      <stop offset="1" stop-color="#120603"/>
+    </radialGradient>
+    <filter id="softFire" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="#120603"/>
+  <rect width="800" height="600" fill="url(#fireGlow)"/>
+  <g opacity=".14" stroke="#ffb04c" stroke-width="1">
+    <path d="M0 80h800M0 140h800M0 200h800M0 260h800M0 320h800M0 380h800M0 440h800M0 500h800"/>
+    <path d="M100 0v600M200 0v600M300 0v600M400 0v600M500 0v600M600 0v600M700 0v600"/>
+  </g>
+  <g filter="url(#softFire)" fill="#170804" stroke="#ffd46a" stroke-width="9" stroke-linejoin="round">
+    <path d="M392 162c72 0 125 58 125 132 0 58-29 102-73 121 24 28 54 48 94 55-66 42-149 26-192-36-50-13-87-61-87-128 0-80 56-144 133-144z"/>
+    <path d="M510 294c72 30 118 86 124 166 5 66-28 108-78 116 24-40 16-82-25-120-40-38-63-91-21-162z"/>
+    <path d="M577 539c36-54 20-88-24-126 48 12 92 52 96 107 2 28-22 50-72 19z"/>
+    <path d="M310 422c-52 16-96 48-124 94 66 13 118-4 155-51"/>
+    <path d="M430 424c52 15 98 45 130 90-63 17-116 2-158-45"/>
+  </g>
+  <g fill="#ffd46a">
+    <circle cx="362" cy="294" r="12"/>
+    <circle cx="440" cy="294" r="12"/>
+  </g>
+  <path d="M374 340c24 18 50 18 76 0" fill="none" stroke="#ffd46a" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="410" cy="342" r="210" fill="none" stroke="#ffb04c" stroke-width="3" opacity=".34"/>
+  <path d="M108 110h118M574 110h118M108 490h118M574 490h118" stroke="#ffb04c" stroke-width="5" opacity=".35"/>
+</svg>

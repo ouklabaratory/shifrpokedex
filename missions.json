@@ -184,12 +184,12 @@
       "pokemon": "Чармандер",
       "audio_before": "audio/mission03.wav",
       "audio_after": "audio/mission_success.wav",
-      "image": "images/mission03.svg",
+      "image": "images/mission04-charmander.svg",
       "background": "",
       "icon": "",
       "missionType": "physical",
       "missionDescription": "ВНИМАНИЕ: следующая операция пройдёт за пределами базы. Следуйте по контрольным точкам маршрута, ищите знаки лаборатории, найдите покебол Чармандера, вернитесь в Командный центр и введите код.",
-      "briefingText": "Покедекс\nВНИМАНИЕ\nСледующая операция пройдёт ЗА ПРЕДЕЛАМИ БАЗЫ.\n\nСвязь нестабильна.\nПоследний сигнал получен снаружи.\nНа карте отмечен маршрут от Командного центра к неизвестной точке.\nНа каждой контрольной точке ищите знак лаборатории.",
+      "briefingText": "ВНИМАНИЕ\n\nСледующая операция\nпройдёт\nЗА ПРЕДЕЛАМИ БАЗЫ.\n\nСвязь нестабильна.\n\nПоследний сигнал\nполучен\nснаружи.",
       "actionButtonLabel": "НАЧАТЬ ЭКСПЕДИЦИЮ",
       "codePromptText": "Карточка Чармандера\n🔥 ЧАРМАНДЕР\n\nФух... Спасибо!\nЯ убежал слишком далеко.\nЕсли бы не вы, я бы никогда не смог найти дорогу обратно.\nВведите мой код в Покедекс.",
       "successScreen": {
@@ -202,7 +202,7 @@
       "nextMission": 5,
       "pokemonCard": {
         "name": "Чармандер",
-        "image": "images/mission03.svg",
+        "image": "images/mission04-charmander.svg",
         "code": "5914",
         "description": "✔ Код подтверждён. ✔ Чармандер найден. Огонь восстановлен. Получен четвёртый фрагмент главного шифра.",
         "voice": "audio/mission_success.wav",
@@ -217,7 +217,17 @@
       "successAudio": "audio/mission_success.wav",
       "backgroundMusic": "",
       "enabled": true,
-      "countsAsRescue": true
+      "countsAsRescue": true,
+      "signalText": "ВНИМАНИЕ\n\nСледующий сигнал\nобнаружен\nза пределами базы.\n\n🔥\nЧАРМАНДЕР\n\nМИССИЯ №4\nЧАРМАНДЕР",
+      "signalShowProgress": false,
+      "signalProgressDurationMs": 4200,
+      "signalHoldMs": 1200,
+      "signalCompact": true,
+      "signalEffect": "unstable-link",
+      "showSignalImage": true,
+      "signalTitle": "",
+      "briefingTitle": "",
+      "briefingCompact": true
     },
     {
       "id": 5,
