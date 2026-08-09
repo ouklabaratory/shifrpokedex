@@ -422,22 +422,58 @@
       "type": "sequence",
       "eyebrow": "ПОКЕДЕКС",
       "screenDelayMs": 900,
-      "finalPauseMs": 600,
+      "finalPauseMs": 900,
       "screens": [
         {
           "title": "ПОПАДАНИЯ ЗАРЕГИСТРИРОВАНЫ",
+          "text": "",
+          "sound": "success",
+          "transition": "scan",
+          "flash": "green",
+          "delayMs": 1200
+        },
+        {
+          "title": "АНАЛИЗ СИСТЕМЫ",
+          "text": "██░░░░░░░░\n\n20%",
+          "sound": "data",
+          "transition": "scan",
+          "delayMs": 700
+        },
+        {
+          "title": "АНАЛИЗ СИСТЕМЫ",
+          "text": "████░░░░░░\n\n40%",
+          "sound": "data",
+          "transition": "none",
+          "delayMs": 700
+        },
+        {
+          "title": "АНАЛИЗ СИСТЕМЫ",
+          "text": "██████░░░░\n\n60%",
+          "sound": "data",
+          "transition": "none",
+          "delayMs": 700
+        },
+        {
+          "title": "АНАЛИЗ СИСТЕМЫ",
+          "text": "████████░░\n\n80%",
+          "sound": "data",
+          "transition": "none",
+          "delayMs": 700
+        },
+        {
+          "title": "АНАЛИЗ СИСТЕМЫ",
           "text": "██████████\n\n100%",
           "sound": "success",
           "transition": "scan",
           "flash": "green",
-          "delayMs": 1300
+          "delayMs": 950
         },
         {
           "title": "ЗАЩИТНАЯ СИСТЕМА",
           "text": "отключена.",
           "sound": "success",
           "transition": "scan",
-          "delayMs": 1200
+          "delayMs": 1300
         },
         {
           "title": "ДОСТУП РАЗРЕШЁН",
@@ -445,7 +481,8 @@
           "sound": "success",
           "transition": "scan",
           "flash": "green",
-          "delayMs": 1600
+          "viewClass": "access-granted-mode",
+          "delayMs": 1800
         }
       ],
       "next": "mission_5_code"

@@ -1147,6 +1147,26 @@ dd {
   text-shadow: 0 0 12px rgba(81, 255, 137, 0.62);
 }
 
+#missionView.access-granted-mode {
+  place-content: center;
+  text-align: center;
+}
+
+#missionView.access-granted-mode #missionTitle {
+  margin: 0;
+  color: var(--green);
+  font-size: clamp(2.15rem, 12vw, 3.9rem);
+  line-height: 0.96;
+  text-shadow:
+    0 0 12px rgba(81, 255, 137, 0.95),
+    0 0 30px rgba(81, 255, 137, 0.62);
+  animation: accessPulse 780ms ease-in-out infinite alternate;
+}
+
+#missionView.access-granted-mode #missionDescription {
+  display: none;
+}
+
 .wait-dots {
   display: inline-flex;
   gap: 6px;
@@ -1644,6 +1664,17 @@ dd {
     opacity: 1;
     background: rgba(81, 255, 137, 0.95);
     box-shadow: 0 0 16px rgba(81, 255, 137, 0.9);
+  }
+}
+
+@keyframes accessPulse {
+  from {
+    transform: scale(0.985);
+    filter: brightness(0.92);
+  }
+  to {
+    transform: scale(1.02);
+    filter: brightness(1.18);
   }
 }
 
