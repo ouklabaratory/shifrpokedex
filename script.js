@@ -265,7 +265,9 @@ class ResourceManager {
       if (!data.title) issues.push(`Миссия ${mission.id} без заголовка.`);
       if (!data.description) issues.push(`Миссия ${mission.id} без описания.`);
       if (!mission.code && !mission.cardCode && !mission.pokemonCard?.code) issues.push(`Миссия ${mission.id} без кода.`);
-      if (!mission.image && !mission.background && !mission.pokemonCard?.image) issues.push(`Миссия ${mission.id} без изображения.`);
+      if (data.missionType !== "finalCipher" && !mission.image && !mission.background && !mission.pokemonCard?.image) {
+        issues.push(`Миссия ${mission.id} без изображения.`);
+      }
     });
     achievements.forEach((achievement) => {
       if (achievement.missionId && !missionIds.has(Number(achievement.missionId))) {
@@ -854,8 +856,10 @@ class QuestApp {
   }
 
   registerServiceWorker() {
-    if (!("serviceWorker" in navigator) || location.protocol === "file:") return;
-    navigator.serviceWorker.register("service-worker.js").catch((error) => console.warn("Service worker failed", error));
+    if (!("serviceWorker" in navigator)) return;
+    navigator.serviceWorker.getRegistrations?.().then((registrations) => {
+      registrations.forEach((registration) => registration.unregister());
+    }).catch(() => {});
   }
 
   async enterBoot() {
