@@ -191,10 +191,10 @@
       "missionDescription": "ВНИМАНИЕ: следующая операция пройдёт за пределами базы. Следуйте по контрольным точкам маршрута, ищите знаки лаборатории, найдите покебол Чармандера, вернитесь в Командный центр и введите код.",
       "briefingText": "ВНИМАНИЕ\n\nСледующая операция\nпройдёт\nЗА ПРЕДЕЛАМИ БАЗЫ.\n\nСвязь нестабильна.\n\nПоследний сигнал\nполучен\nснаружи.",
       "actionButtonLabel": "НАЧАТЬ ЭКСПЕДИЦИЮ",
-      "codePromptText": "Карточка Чармандера\n🔥 ЧАРМАНДЕР\n\nФух... Спасибо!\nЯ убежал слишком далеко.\nЕсли бы не вы, я бы никогда не смог найти дорогу обратно.\nВведите мой код в Покедекс.",
+      "codePromptText": "Введите код\n\n□ □ □ □",
       "successScreen": {
-        "title": "МИССИЯ ВЫПОЛНЕНА",
-        "text": "✔ Код подтверждён. ✔ Чармандер найден. Огонь восстановлен. Получен четвёртый фрагмент главного шифра.",
+        "title": "ПРОВЕРКА",
+        "text": "✔ Код подтверждён\n\n✔ Чармандер найден",
         "effect": "success"
       },
       "fragmentIndex": 4,
@@ -204,7 +204,7 @@
         "name": "Чармандер",
         "image": "images/mission04-charmander.svg",
         "code": "5914",
-        "description": "✔ Код подтверждён. ✔ Чармандер найден. Огонь восстановлен. Получен четвёртый фрагмент главного шифра.",
+        "description": "✔ Код подтверждён\n\n✔ Чармандер найден",
         "voice": "audio/mission_success.wav",
         "successEffect": "success"
       },
@@ -213,7 +213,7 @@
       "audio": "audio/mission03.wav",
       "slides": [],
       "code": "5914",
-      "successText": "✔ Код подтверждён. ✔ Чармандер найден. Огонь восстановлен. Получен четвёртый фрагмент главного шифра.",
+      "successText": "✔ Код подтверждён\n\n✔ Чармандер найден",
       "successAudio": "audio/mission_success.wav",
       "backgroundMusic": "",
       "enabled": true,
@@ -238,7 +238,9 @@
           "image": "images/charmander-route-map.svg"
         }
       ],
-      "preCodeNextStep": "oak_charmander_route_incoming"
+      "preCodeNextStep": "oak_charmander_route_incoming",
+      "codeEntryText": "Введите код\n\n□ □ □ □",
+      "enterCodeButtonLabel": "ВВЕСТИ КОД"
     },
     {
       "id": 5,

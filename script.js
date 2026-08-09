@@ -1222,8 +1222,8 @@ class QuestApp {
     for (const screen of screens) {
       el.missionTitle.textContent = screen.title || "";
       el.missionDescription.textContent = screen.text || "";
-      this.audio.pattern(screen.sound || "success");
-      this.animations.transition(screen.transition || "scan");
+      if (screen.sound !== "none") this.audio.pattern(screen.sound || "success");
+      if (screen.transition !== "none") this.animations.transition(screen.transition || "scan");
       if (screen.flash) this.animations.flash(screen.flash);
       await wait(screen.delayMs || step.screenDelayMs || 1800);
     }
@@ -1338,7 +1338,7 @@ class QuestApp {
     return `${"█".repeat(filled)}${"░".repeat(blocks - filled)}`;
   }
 
-  enterMission(step) {
+  enterMission(step, options = {}) {
     const mission = this.missions.find((item) => Number(item.id) === Number(step.missionId));
     if (!mission) throw new Error(`Mission not found: ${step.missionId}`);
     this.activeMission = mission;
@@ -1374,8 +1374,8 @@ class QuestApp {
     el.missionFeedback.textContent = "";
     el.missionFeedback.className = "mission-feedback";
     this.renderMedia("mission", mediaFromMission(mission));
-    if (this.activeMissionData.audio) this.audio.play(this.activeMissionData.audio, "voice", "message");
-    if (this.activeMissionData.backgroundMusic) this.audio.play(this.activeMissionData.backgroundMusic, "music", "message", { loop: true });
+    if (!options.quietAudio && this.activeMissionData.audio) this.audio.play(this.activeMissionData.audio, "voice", "message");
+    if (!options.quietAudio && this.activeMissionData.backgroundMusic) this.audio.play(this.activeMissionData.backgroundMusic, "music", "message", { loop: true });
     this.updateProgress();
     this.debug.update();
     if (this.missionPhase === "signal") {
@@ -1385,9 +1385,10 @@ class QuestApp {
   }
 
   enterMissionCode(step) {
-    this.enterMission(step);
+    this.enterMission(step, { quietAudio: Boolean(step.directCode) });
     this.clearMissionTimers();
-    this.showMissionCardPrompt();
+    if (step.directCode) this.beginMissionCodeEntry();
+    else this.showMissionCardPrompt();
   }
 
   checkMissionCode() {
@@ -1553,6 +1554,8 @@ class QuestApp {
     el.codeLabel.hidden = true;
     el.secretCode.hidden = true;
     el.missionSecondaryAction.hidden = true;
+    el.checkCode.hidden = false;
+    el.checkCode.disabled = false;
     el.checkCode.textContent = this.activeMissionData.enterCodeButtonLabel || "ВВЕСТИ КОД";
     el.missionFeedback.textContent = "";
     el.missionFeedback.className = "mission-feedback";
@@ -1576,6 +1579,8 @@ class QuestApp {
     el.codeLabel.hidden = false;
     el.secretCode.hidden = false;
     el.missionSecondaryAction.hidden = true;
+    el.checkCode.hidden = false;
+    el.checkCode.disabled = false;
     el.checkCode.textContent = this.config.quest.checkButton;
     el.missionFeedback.textContent = "";
     el.missionFeedback.className = "mission-feedback";

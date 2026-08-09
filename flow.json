@@ -209,6 +209,104 @@
       "id": "mission_4_code",
       "type": "missionCode",
       "missionId": 4,
+      "next": "oak_after_charmander_incoming",
+      "directCode": true
+    },
+    {
+      "id": "oak_after_charmander_incoming",
+      "type": "incoming",
+      "next": "oak_after_charmander"
+    },
+    {
+      "id": "oak_after_charmander",
+      "type": "audio",
+      "audio": "audio/oak06.mp3",
+      "timeline": "timelines/oak_after_charmander.json",
+      "next": "charmander_fire_challenge"
+    },
+    {
+      "id": "charmander_fire_challenge",
+      "type": "challenge",
+      "eyebrow": "ИСПЫТАНИЕ",
+      "title": "КОСТЁР ДРУЖБЫ",
+      "description": "Поднимите свои огни.\n\nСоедините их\nв центре круга.\n\nНе отпускайте\n5 секунд.",
+      "buttonLabel": "НАЧАТЬ ИСПЫТАНИЕ",
+      "next": "charmander_fire_sequence"
+    },
+    {
+      "id": "charmander_fire_sequence",
+      "type": "sequence",
+      "eyebrow": "ИСПЫТАНИЕ",
+      "screenDelayMs": 850,
+      "finalPauseMs": 900,
+      "screens": [
+        {
+          "title": "ОТСЧЁТ",
+          "text": "5",
+          "sound": "data",
+          "transition": "scan"
+        },
+        {
+          "title": "ОТСЧЁТ",
+          "text": "4",
+          "sound": "data",
+          "transition": "none"
+        },
+        {
+          "title": "ОТСЧЁТ",
+          "text": "3",
+          "sound": "data",
+          "transition": "none"
+        },
+        {
+          "title": "ОТСЧЁТ",
+          "text": "2",
+          "sound": "data",
+          "transition": "none"
+        },
+        {
+          "title": "ОТСЧЁТ",
+          "text": "1",
+          "sound": "data",
+          "transition": "none",
+          "flash": "yellow",
+          "delayMs": 900
+        },
+        {
+          "title": "🔥 ЧАРМАНДЕР СПАСЁН",
+          "text": "Огонь восстановлен.",
+          "sound": "success",
+          "flash": "yellow",
+          "delayMs": 1500
+        },
+        {
+          "title": "СПАСЕНО ПОКЕМОНОВ",
+          "text": "4 / 6",
+          "sound": "success",
+          "delayMs": 1500
+        },
+        {
+          "title": "ФРАГМЕНТ СОХРАНЁН",
+          "text": "Получен\nчетвёртый фрагмент\nглавного шифра.\n\n■ ■ ■ ■ □ □",
+          "sound": "success",
+          "delayMs": 2200
+        },
+        {
+          "title": "",
+          "text": "",
+          "sound": "none",
+          "transition": "none",
+          "delayMs": 2600
+        },
+        {
+          "title": "ТРЕВОГА",
+          "text": "Сигнал тревоги.\n\nСирена.",
+          "sound": "failed",
+          "transition": "scan",
+          "flash": "red",
+          "delayMs": 2000
+        }
+      ],
       "next": "mission_5"
     },
     {

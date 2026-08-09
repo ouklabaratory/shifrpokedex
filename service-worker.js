@@ -1,4 +1,4 @@
-const CACHE_NAME = "pokedex-secret-link-v50";
+const CACHE_NAME = "pokedex-secret-link-v51";
 
 const CORE_ASSETS = [
   "./",
@@ -6,10 +6,10 @@ const CORE_ASSETS = [
   "./admin.html",
   "./admin.css",
   "./admin.js",
-  "./admin.js?v=charmander-map-labels1",
+  "./admin.js?v=charmander-fire1",
   "./style.css",
   "./script.js",
-  "./script.js?v=charmander-map-labels1",
+  "./script.js?v=charmander-fire1",
   "./config.json",
   "./missions.json",
   "./flow.json",
@@ -27,6 +27,7 @@ const CORE_ASSETS = [
   "./timelines/oak_after_eevee.json",
   "./timelines/oak_after_bulbasaur.json",
   "./timelines/oak_charmander_route.json",
+  "./timelines/oak_after_charmander.json",
   "./images/icon.svg",
   "./images/icon-maskable.svg",
   "./images/logo.svg",
