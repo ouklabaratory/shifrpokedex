@@ -1,0 +1,15 @@
+{
+  "audio": "audio/oak12.mp3",
+  "events": [
+    {
+      "time": 0,
+      "type": "media",
+      "target": "message",
+      "media": {
+        "type": "image",
+        "src": "images/professor-oak.png",
+        "alt": "Профессор Оук на связи"
+      }
+    }
+  ]
+}

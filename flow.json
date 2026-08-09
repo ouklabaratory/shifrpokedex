@@ -634,12 +634,219 @@
       "id": "mission_6",
       "type": "mission",
       "missionId": 6,
+      "next": "rotom_system_restore_sequence"
+    },
+    {
+      "id": "rotom_system_restore_sequence",
+      "type": "sequence",
+      "eyebrow": "ПОКЕДЕКС",
+      "rank": "Шестой фрагмент",
+      "screenDelayMs": 2000,
+      "finalPauseMs": 800,
+      "screens": [
+        {
+          "title": "Восстановление системы...",
+          "text": "Инициализация ремонта...\n\n░░░░░░░░░░",
+          "sound": "data",
+          "transition": "scan",
+          "delayMs": 1700
+        },
+        {
+          "title": "Восстановление памяти...",
+          "text": "█░░░░░░░░░\n\n12%",
+          "sound": "data",
+          "transition": "none",
+          "delayMs": 1900
+        },
+        {
+          "title": "Восстановление памяти...",
+          "text": "███░░░░░░░\n\n28%",
+          "sound": "data",
+          "transition": "none",
+          "delayMs": 1900
+        },
+        {
+          "title": "Восстановление памяти...",
+          "text": "████░░░░░░\n\n41%",
+          "sound": "data",
+          "transition": "none",
+          "delayMs": 1900
+        },
+        {
+          "title": "Восстановление памяти...",
+          "text": "██████░░░░\n\n63%",
+          "sound": "data",
+          "transition": "none",
+          "delayMs": 1900
+        },
+        {
+          "title": "Восстановление памяти...",
+          "text": "████████░░\n\n79%",
+          "sound": "data",
+          "transition": "none",
+          "delayMs": 1900
+        },
+        {
+          "title": "Восстановление памяти...",
+          "text": "█████████░\n\n91%",
+          "sound": "data",
+          "transition": "none",
+          "delayMs": 1900
+        },
+        {
+          "title": "Восстановление памяти...",
+          "text": "██████████\n\n100%",
+          "sound": "success",
+          "transition": "scan",
+          "flash": "green",
+          "delayMs": 2200
+        },
+        {
+          "title": "⚙ РОТОМ СПАСЁН",
+          "text": "Система восстановлена.",
+          "sound": "success",
+          "transition": "scan",
+          "flash": "green",
+          "delayMs": 1800
+        },
+        {
+          "title": "СПАСЕНО ПОКЕМОНОВ",
+          "text": "6 / 6",
+          "sound": "success",
+          "transition": "none",
+          "delayMs": 1800
+        },
+        {
+          "title": "",
+          "text": "",
+          "sound": "none",
+          "transition": "none",
+          "delayMs": 2200
+        },
+        {
+          "title": "ВНИМАНИЕ",
+          "text": "ЛАБОРАТОРИЯ\n\nВСЁ ЕЩЁ\n\nЗАБЛОКИРОВАНА",
+          "viewClass": "emergency-mode",
+          "sound": "failed",
+          "transition": "scan",
+          "flash": "red",
+          "delayMs": 3200
+        }
+      ],
+      "next": "oak_final_cipher_incoming"
+    },
+    {
+      "id": "oak_final_cipher_incoming",
+      "type": "incoming",
+      "next": "oak_final_cipher"
+    },
+    {
+      "id": "oak_final_cipher",
+      "type": "audio",
+      "audio": "audio/oak11.mp3",
+      "timeline": "timelines/oak_final_cipher.json",
       "next": "mission_7"
     },
     {
       "id": "mission_7",
       "type": "mission",
       "missionId": 7,
+      "next": "final_lab_restore_sequence"
+    },
+    {
+      "id": "final_lab_restore_sequence",
+      "type": "sequence",
+      "eyebrow": "ПОКЕДЕКС",
+      "screenDelayMs": 1200,
+      "finalPauseMs": 800,
+      "screens": [
+        {
+          "title": "",
+          "text": "",
+          "viewClass": "blackout-mode",
+          "sound": "none",
+          "transition": "none",
+          "delayMs": 5000
+        },
+        {
+          "title": "ЛАБОРАТОРИЯ ВОССТАНОВЛЕНА",
+          "text": "ВСЕ ПОКЕМОНЫ\nВЕРНУЛИСЬ ДОМОЙ",
+          "viewClass": "lab-restored-mode",
+          "sound": "victory",
+          "transition": "wake",
+          "flash": "yellow",
+          "delayMs": 2600
+        },
+        {
+          "title": "ЛАБОРАТОРИЯ ВОССТАНОВЛЕНА",
+          "text": "⚡ Пикачу   ✔",
+          "viewClass": "lab-restored-mode",
+          "sound": "success",
+          "transition": "none",
+          "delayMs": 900
+        },
+        {
+          "title": "ЛАБОРАТОРИЯ ВОССТАНОВЛЕНА",
+          "text": "⚡ Пикачу   ✔\n🦊 Иви   ✔",
+          "viewClass": "lab-restored-mode",
+          "sound": "success",
+          "transition": "none",
+          "delayMs": 900
+        },
+        {
+          "title": "ЛАБОРАТОРИЯ ВОССТАНОВЛЕНА",
+          "text": "⚡ Пикачу   ✔\n🦊 Иви   ✔\n🌿 Бульбазавр   ✔",
+          "viewClass": "lab-restored-mode",
+          "sound": "success",
+          "transition": "none",
+          "delayMs": 900
+        },
+        {
+          "title": "ЛАБОРАТОРИЯ ВОССТАНОВЛЕНА",
+          "text": "⚡ Пикачу   ✔\n🦊 Иви   ✔\n🌿 Бульбазавр   ✔\n🔥 Чармандер   ✔",
+          "viewClass": "lab-restored-mode",
+          "sound": "success",
+          "transition": "none",
+          "delayMs": 900
+        },
+        {
+          "title": "ЛАБОРАТОРИЯ ВОССТАНОВЛЕНА",
+          "text": "⚡ Пикачу   ✔\n🦊 Иви   ✔\n🌿 Бульбазавр   ✔\n🔥 Чармандер   ✔\n💧 Сквиртл   ✔",
+          "viewClass": "lab-restored-mode",
+          "sound": "success",
+          "transition": "none",
+          "delayMs": 900
+        },
+        {
+          "title": "ЛАБОРАТОРИЯ ВОССТАНОВЛЕНА",
+          "text": "⚡ Пикачу   ✔\n🦊 Иви   ✔\n🌿 Бульбазавр   ✔\n🔥 Чармандер   ✔\n💧 Сквиртл   ✔\n⚙ Ротом   ✔",
+          "viewClass": "lab-restored-mode",
+          "sound": "success",
+          "transition": "none",
+          "delayMs": 1700
+        },
+        {
+          "title": "ОПЕРАЦИЯ ЗАВЕРШЕНА",
+          "text": "",
+          "viewClass": "access-granted-mode",
+          "sound": "victory",
+          "transition": "scan",
+          "flash": "green",
+          "delayMs": 2500
+        }
+      ],
+      "next": "oak_final_congrats_incoming"
+    },
+    {
+      "id": "oak_final_congrats_incoming",
+      "type": "incoming",
+      "next": "oak_final_congrats"
+    },
+    {
+      "id": "oak_final_congrats",
+      "type": "audio",
+      "audio": "audio/oak12.mp3",
+      "timeline": "timelines/oak_final_congrats.json",
       "next": "victory"
     },
     {

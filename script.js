@@ -1212,7 +1212,7 @@ class QuestApp {
     el.missionView?.classList?.add("briefing-compact");
     el.missionView?.classList?.remove("signal-mode");
     el.missionView?.classList?.remove("signal-compact");
-    el.missionView?.classList?.remove("rocket-alert-mode", "stealth-wait-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode");
+    el.missionView?.classList?.remove("rocket-alert-mode", "stealth-wait-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode", "lab-restored-mode");
     el.missionNumber.textContent = step.eyebrow || "ПОКЕДЕКС";
     el.teamRank.textContent = step.rank || "";
     el.codeLabel.hidden = true;
@@ -1223,7 +1223,7 @@ class QuestApp {
     el.missionFeedback.className = "mission-feedback";
     const screens = step.screens || [];
     for (const screen of screens) {
-      el.missionView?.classList?.remove("rocket-alert-mode", "stealth-wait-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode");
+      el.missionView?.classList?.remove("rocket-alert-mode", "stealth-wait-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode", "lab-restored-mode");
       if (screen.viewClass) el.missionView?.classList?.add(screen.viewClass);
       el.missionTitle.textContent = screen.title || "";
       el.missionDescription.textContent = screen.text || "";
@@ -1233,7 +1233,7 @@ class QuestApp {
       await wait(screen.delayMs || step.screenDelayMs || 1800);
     }
     await wait(step.finalPauseMs || 900);
-    el.missionView?.classList?.remove("rocket-alert-mode", "stealth-wait-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode");
+    el.missionView?.classList?.remove("rocket-alert-mode", "stealth-wait-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode", "lab-restored-mode");
     this.stateMachine.next();
   }
 
@@ -1245,7 +1245,7 @@ class QuestApp {
     this.updateTeamHud();
     this.showView("missionView");
     el.missionFrame.hidden = true;
-    el.missionView?.classList?.remove("briefing-mode", "briefing-compact", "signal-mode", "signal-compact", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode");
+    el.missionView?.classList?.remove("briefing-mode", "briefing-compact", "signal-mode", "signal-compact", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode", "lab-restored-mode");
     el.missionView?.classList?.add("stealth-wait-mode");
     el.missionNumber.textContent = step.eyebrow || "ПОКЕДЕКС";
     el.teamRank.textContent = step.rank || "";
@@ -1281,7 +1281,7 @@ class QuestApp {
     this.showView("missionView");
     el.missionFrame.hidden = true;
     el.missionView?.classList?.add("briefing-mode");
-    el.missionView?.classList?.remove("signal-mode", "stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode");
+    el.missionView?.classList?.remove("signal-mode", "stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode", "lab-restored-mode");
     if (step.viewClass) el.missionView?.classList?.add(step.viewClass);
     el.missionNumber.textContent = step.eyebrow || "ИСПЫТАНИЕ";
     el.teamRank.textContent = "";
@@ -1310,7 +1310,7 @@ class QuestApp {
     this.showView("missionView");
     el.missionFrame.hidden = true;
     el.missionView?.classList?.add("briefing-mode");
-    el.missionView?.classList?.remove("signal-mode", "stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode");
+    el.missionView?.classList?.remove("signal-mode", "stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode", "lab-restored-mode");
     el.missionNumber.textContent = step.eyebrow || "ПРОВЕРКА";
     el.teamRank.textContent = "";
     el.missionTitle.textContent = step.title || "";
@@ -1394,7 +1394,7 @@ class QuestApp {
     el.missionView?.classList?.toggle("signal-mode", this.missionPhase === "signal");
     el.missionView?.classList?.toggle("briefing-compact", this.missionPhase !== "signal" && Boolean(this.activeMissionData.briefingCompact));
     el.missionView?.classList?.toggle("signal-compact", this.missionPhase === "signal" && Boolean(this.activeMissionData.signalCompact));
-    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode");
+    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode", "lab-restored-mode");
     el.missionNumber.textContent = `${this.config.quest.missionLabel} ${String(this.missions.indexOf(mission) + 1).padStart(2, "0")} / ${String(this.missions.length).padStart(2, "0")}`;
     el.missionTitle.textContent = this.missionPhase === "signal"
       ? (this.activeMissionData.signalTitle ?? this.activeMissionData.title)
@@ -1485,7 +1485,7 @@ class QuestApp {
     el.missionFrame.hidden = Boolean(this.activeMissionData.briefingText);
     el.missionView?.classList?.remove("signal-mode");
     el.missionView?.classList?.remove("signal-compact");
-    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode");
+    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode", "lab-restored-mode");
     el.missionView?.classList?.toggle("briefing-mode", Boolean(this.activeMissionData.briefingText));
     el.missionView?.classList?.toggle("briefing-compact", Boolean(this.activeMissionData.briefingCompact));
     el.missionTitle.textContent = this.activeMissionData.briefingTitle ?? this.activeMissionData.title;
@@ -1545,7 +1545,7 @@ class QuestApp {
     if (screen.image) this.renderMedia("mission", { type: typeFromSource(screen.image), src: screen.image, alt: screen.title || this.activeMissionData.title });
     el.missionView?.classList?.remove("signal-mode");
     el.missionView?.classList?.remove("signal-compact");
-    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode");
+    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode", "lab-restored-mode");
     el.missionView?.classList?.toggle("briefing-mode", Boolean(screen.text));
     el.missionView?.classList?.toggle("briefing-compact", Boolean(screen.compact));
     el.missionTitle.textContent = screen.title || "";
@@ -1601,7 +1601,7 @@ class QuestApp {
     el.missionView?.classList?.remove("briefing-compact");
     el.missionView?.classList?.remove("signal-mode");
     el.missionView?.classList?.remove("signal-compact");
-    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode");
+    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode", "lab-restored-mode");
     el.missionDescription.textContent = this.activeMissionData.codePromptText;
     el.codeLabel.hidden = true;
     el.secretCode.hidden = true;
@@ -1627,7 +1627,7 @@ class QuestApp {
     el.missionView?.classList?.remove("briefing-compact");
     el.missionView?.classList?.remove("signal-mode");
     el.missionView?.classList?.remove("signal-compact");
-    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode");
+    el.missionView?.classList?.remove("stealth-wait-mode", "rocket-alert-mode", "access-granted-mode", "system-failure-mode", "blackout-mode", "emergency-mode", "lab-restored-mode");
     el.missionDescription.textContent = this.activeMissionData.codeEntryText || this.codeEntryText();
     el.codeLabel.hidden = false;
     el.secretCode.hidden = false;
